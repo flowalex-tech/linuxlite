@@ -22,10 +22,17 @@
 },
 {
   "name": "JDK8",
-  "description": "AdoptOpenJDK8 ()",
+  "description": "Installs AdoptOpenJDK8",
   "category": "Programming",
   "icon_url":"/static/images/jdk-48.png",
   "installers": {"apt": {"pre_install": ["sudo apt-get install -y software-properties-common","wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | sudo apt-key add -","sudo add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/"], "package_name": "adoptopenjdk-8-hotspot", "post_install": [""]}}
+},
+{
+"name": "JDK 11",
+"description": "Installs AdoptOpenJDK11",
+"category": "Programming",
+"icon_url":"/static/images/jdk-48.png",
+"installers": {"apt": {"pre_install": ["sudo apt-get install -y software-properties-common","wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | sudo apt-key add -","sudo add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/"], "package_name": "adoptopenjdk-11-hotspot", "post_install": [""]}}
 },
 {
   "name": "Gzip",
