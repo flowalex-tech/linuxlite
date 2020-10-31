@@ -3,7 +3,7 @@ Flask==0.12.5
 Flask-SQLAlchemy==2.4.4
 itsdangerous==0.24
 Jinja2==2.9.6
-MarkupSafe==1.0
+MarkupSafe==1.1.1
 SQLAlchemy==1.1.10
 Werkzeug==0.12.2
 gunicorn==19.7.1
