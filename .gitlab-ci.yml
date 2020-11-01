@@ -33,3 +33,11 @@ pylint:
     - pylint -d C0301 */*.py
   only:
     - merge_requests
+
+jsonlint:
+  stage: Static Analysis
+  image: pipelinecomponents/jsonlint:latest
+  script:
+    - |
+      find . -not -path './.git/*' -name '*.json' -type f -print0 |
+      parallel --will-cite -k -0 -n1 jsonlint -q
