@@ -69,7 +69,7 @@
   "installers": {"apt": {"pre_install": ["apt-get -y install curl konsole zenity wget software-properties-common debconf-utils python-apt",
                                          "dpkg --add-architecture i386",
                                          "apt-get update",
-                                         "add-apt-repository multiverse", 
+                                         "add-apt-repository multiverse",
                                          "apt purge steam steamcmd || exit 0",
                                          "echo -e 'steam\tsteam/question\tselect\tI AGREE' | debconf-set-selections",
                                          "echo -e 'steam\tsteam/license\tnote\t' | debconf-set-selections",
@@ -114,7 +114,7 @@
                             "package_name": "mongodb-org",
                             "post_install": []}}
 },
-{ 
+{
   "name": "Slack",
   "description": "Slack",
   "category": "Messaging",
@@ -134,7 +134,7 @@
                          "post_install": []}}
 
 },
-{ 
+{
   "name": "Vagrant",
   "description": "Vagrant",
   "category": "Programming",
@@ -434,5 +434,15 @@
   "installers": {"apt": {"pre_install": [],
                            "package_name": "flatpak",
                            "post_install": ["flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo"]}}
+},
+{
+  "name":"OBS",
+  "description": "Open Broadcaster Software, Free and open source software for video recording and live streaming.",
+  "category": "Games",
+  "icon_url":"/static/images/obs.png",
+  "installers": {"apt": {"pre_install": ["add-apt-repository ppa:obsproject/obs-studio",
+    "sudo apt update"],
+                           "package_name": "obs-studio",
+                           "post_install": []}}
 }
 ]
