@@ -10,19 +10,19 @@ from sqlalchemy.ext.declarative import declarative_base
 from models import register_models
 
 def load_json():
-  try:
-    os.chdir("packages")
-    sub = True
-  except:
-    sub = False
+    try:
+      os.chdir("packages")
+      sub = True
+    except:
+      sub = False
 
-  with open("packages.json") as json_f:
-    packages = json.load(json_f)
+    with open("packages.json") as json_f:
+      packages = json.load(json_f)
 
-  if sub:
-    os.chdir("..")
+    if sub:
+      os.chdir("..")
 
-  return packages
+    return packages
 
 def init_db(uri):
     engine = create_engine(uri, convert_unicode=True)
