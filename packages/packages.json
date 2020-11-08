@@ -442,5 +442,14 @@
 "installers": {"apt": {"pre_install": ["flatpak install flathub com.bitwarden.desktop"],
                        "package_name": "",
                        "post_install": []}}
+},
+{
+"name": "Darktable (flatpack)",
+"description": "A free and open-source photography application software and raw developer. This will install the flatpak version from flathub",
+"category": "Graphics",
+"icon_url":"/static/images/darktable.png",
+"installers": {"apt": {"pre_install": ["flatpak install flathub org.darktable.Darktable"],
+                       "package_name": "",
+                       "post_install": []}}
 }
 ]
