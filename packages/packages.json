@@ -784,5 +784,23 @@
                 "post_install": []
             }
         }
-    }
+    },
+    {
+      "name": "Vivaldi",
+      "description": "Vivaldi",
+      "category": "Browsers",
+      "icon_url": "/static/images/Vivaldi.png",
+      "installers": {
+          "apt": {
+              "pre_install": [
+                  "wget -qO- https://repo.vivaldi.com/archive/linux_signing_key.pub | sudo apt-key add -",
+                  "add-apt-repository 'deb https://repo.vivaldi.com/archive/deb/ stable main'",
+                  "apt update",
+                  "apt install vivaldi-stable"
+              ],
+              "package_name": "",
+              "post_install": []
+          }
+      }
+  }
 ]
