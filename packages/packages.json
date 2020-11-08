@@ -103,17 +103,14 @@
         }
     },
     {
-        "name": "Spotify",
-        "description": "Music Streaming App",
+        "name": "Spotify (flatpak)",
+        "description": "Music Streaming App.  This will install the flatpak version",
         "category": "Media",
         "icon_url": "/static/images/spotify-48.png",
         "installers": {
             "apt": {
                 "pre_install": [
-                    "apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 931FF8E79F0876134EDDBDCCA87FF9DF48BF1C90",
-                    "echo deb http://repository.spotify.com stable non-free | tee /etc/apt/sources.list.d/spotify.list",
-                    "apt-get update",
-                    "apt-get install -y spotify-client"
+                    "flatpak install flathub com.spotify.Client"
                 ],
                 "package_name": "",
                 "post_install": []
@@ -730,6 +727,58 @@
             "apt": {
                 "pre_install": [
                     "flatpak install flathub org.darktable.Darktable"
+                ],
+                "package_name": "",
+                "post_install": []
+            }
+        }
+    },
+    {
+      "name": "Discord (flatpak)",
+      "description": "All-in-one voice and text chat for gamers that's free, secure, and works on both your desktop and phone. This will install the flatpak version from flathub",
+      "category": "Productivity",
+      "icon_url":"/static/images/discord-48.png",
+      "installers": {"apt": {"pre_install": ["flatpak install flathub com.discordapp.Discord"],
+    "package_name": "",
+    "post_install": []
+          }
+        }
+      },
+      {
+        "name": "Pulse Effects   (flatpak)",
+        "description": "Audio Effects for PulseAudio Applications. This will install the flatpak version from flathub",
+        "category": "Tools",
+        "icon_url":"/static/images/pulseeffects.png",
+        "installers": {"apt": {"pre_install": ["flatpak install flathub com.discordapp.Discord"],
+      "package_name": "",
+      "post_install": []
+            }
+          }
+        },
+        {
+          "name": "Gnome Podcasts (flatpak)",
+          "description": "Podcast app for GNOME.  This will install the flatpak version",
+          "category": "Media",
+          "icon_url": "/static/images/gnome_podcasts.png",
+          "installers": {
+              "apt": {
+                  "pre_install": [
+                      "flatpak install flathub org.gnome.Podcasts"
+                  ],
+                  "package_name": "",
+                  "post_install": []
+              }
+          }
+      },
+      {
+        "name": "Flameshot (flatpak)",
+        "description": "Powerful and simple to use screenshot software.  This will install the flatpak version",
+        "category": "Graphics",
+        "icon_url": "/static/images/flameshot-icon.png",
+        "installers": {
+            "apt": {
+                "pre_install": [
+                    "flatpak install flathub org.flameshot.Flameshot"
                 ],
                 "package_name": "",
                 "post_install": []
