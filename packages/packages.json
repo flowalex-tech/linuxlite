@@ -81,17 +81,6 @@
                          "post_install": ["rm steam.deb"]}}
 },
 {
-  "name": "Skype",
-  "description": "Microsoft's video chat platform",
-  "category": "Messaging",
-  "icon_url":"/static/images/skype-48.png",
-  "installers": {"apt": {"pre_install": ["dpkg --add-architecture i386",
-                                         "apt-get update",
-                                         "apt-get -y install software-properties-common python-apt apt-transport-https gnome-keyring gconf-service libgconf2-4",
-                                         "wget -O skype.deb https://go.skype.com/skypeforlinux-64.deb",
-                                         "dpkg -i skype.deb"], "package_name": "", "post_install": ["rm skype.deb"]}}
-},
-{
   "name": "SQLite",
   "description": "SQLite Database",
   "category": "Databases",
