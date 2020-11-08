@@ -646,14 +646,11 @@
         "installers": {
             "apt": {
                 "pre_install": [
-                    "add-apt-repository ppa:gophers/archive",
+                    "add-apt-repository ppa:longsleep/golang-backports",
                     "apt update"
                 ],
-                "package_name": "golang-1.9-go",
-                "post_install": [
-                    "echo \"export PATH=$PATH:/usr/lib/go-1.9/bin\" >> ~/.bashrc",
-                    ". ~/.bashrc"
-                ]
+                "package_name": "golang-go",
+                "post_install": []
             }
         }
     },
@@ -734,43 +731,51 @@
         }
     },
     {
-      "name": "Discord (flatpak)",
-      "description": "All-in-one voice and text chat for gamers that's free, secure, and works on both your desktop and phone. This will install the flatpak version from flathub",
-      "category": "Productivity",
-      "icon_url":"/static/images/discord-48.png",
-      "installers": {"apt": {"pre_install": ["flatpak install flathub com.discordapp.Discord"],
-    "package_name": "",
-    "post_install": []
-          }
+        "name": "Discord (flatpak)",
+        "description": "All-in-one voice and text chat for gamers that's free, secure, and works on both your desktop and phone. This will install the flatpak version from flathub",
+        "category": "Productivity",
+        "icon_url": "/static/images/discord-48.png",
+        "installers": {
+            "apt": {
+                "pre_install": [
+                    "flatpak install flathub com.discordapp.Discord"
+                ],
+                "package_name": "",
+                "post_install": []
+            }
         }
-      },
-      {
+    },
+    {
         "name": "Pulse Effects   (flatpak)",
         "description": "Audio Effects for PulseAudio Applications. This will install the flatpak version from flathub",
         "category": "Tools",
-        "icon_url":"/static/images/pulseeffects.png",
-        "installers": {"apt": {"pre_install": ["flatpak install flathub com.discordapp.Discord"],
-      "package_name": "",
-      "post_install": []
+        "icon_url": "/static/images/pulseeffects.png",
+        "installers": {
+            "apt": {
+                "pre_install": [
+                    "flatpak install flathub com.discordapp.Discord"
+                ],
+                "package_name": "",
+                "post_install": []
             }
-          }
-        },
-        {
-          "name": "Gnome Podcasts (flatpak)",
-          "description": "Podcast app for GNOME.  This will install the flatpak version",
-          "category": "Media",
-          "icon_url": "/static/images/gnome_podcasts.png",
-          "installers": {
-              "apt": {
-                  "pre_install": [
-                      "flatpak install flathub org.gnome.Podcasts"
-                  ],
-                  "package_name": "",
-                  "post_install": []
-              }
-          }
-      },
-      {
+        }
+    },
+    {
+        "name": "Gnome Podcasts (flatpak)",
+        "description": "Podcast app for GNOME.  This will install the flatpak version",
+        "category": "Media",
+        "icon_url": "/static/images/gnome_podcasts.png",
+        "installers": {
+            "apt": {
+                "pre_install": [
+                    "flatpak install flathub org.gnome.Podcasts"
+                ],
+                "package_name": "",
+                "post_install": []
+            }
+        }
+    },
+    {
         "name": "Flameshot (flatpak)",
         "description": "Powerful and simple to use screenshot software.  This will install the flatpak version",
         "category": "Graphics",
@@ -786,21 +791,96 @@
         }
     },
     {
-      "name": "Vivaldi",
-      "description": "Vivaldi",
-      "category": "Browsers",
-      "icon_url": "/static/images/Vivaldi.png",
-      "installers": {
-          "apt": {
-              "pre_install": [
-                  "wget -qO- https://repo.vivaldi.com/archive/linux_signing_key.pub | sudo apt-key add -",
-                  "add-apt-repository 'deb https://repo.vivaldi.com/archive/deb/ stable main'",
-                  "apt update",
-                  "apt install vivaldi-stable"
-              ],
-              "package_name": "",
-              "post_install": []
-          }
-      }
-  }
+        "name": "Vivaldi",
+        "description": "Vivaldi",
+        "category": "Browsers",
+        "icon_url": "/static/images/Vivaldi.png",
+        "installers": {
+            "apt": {
+                "pre_install": [
+                    "wget -qO- https://repo.vivaldi.com/archive/linux_signing_key.pub | sudo apt-key add -",
+                    "add-apt-repository 'deb https://repo.vivaldi.com/archive/deb/ stable main'",
+                    "apt update",
+                    "apt install vivaldi-stable"
+                ],
+                "package_name": "",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "Solaar",
+        "description": "A Linux manager for many Logitech keyboards, mice, and trackpads that connect wirelessly to a USB Unifying, Lightspeed, or Nano receiver, connect directly via a USB cable, or connect via Bluetooth",
+        "category": "Tools",
+        "icon_url": "/static/images/solaar.png",
+        "installers": {
+            "apt": {
+                "pre_install": [],
+                "package_name": "apt-get install solaar",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "Sublime Merge",
+        "description": "A Git Client, done Sublime",
+        "category": "Editors",
+        "icon_url": "/static/images/sublime_merge-48.png",
+        "installers": {
+            "apt": {
+                "pre_install": [
+                    "wget https://download.sublimetext.com/sublimehq-pub.gpg",
+                    "apt-key add sublimehq-pub.gpg",
+                    "rm sublimehq-pub.gpg",
+                    "echo 'deb https://download.sublimetext.com/ apt/stable/' >> /etc/apt/sources.list.d/sublime-text.list",
+                    "apt-get update"
+                ],
+                "package_name": "sublime-merge",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "Gnome Tweaks",
+        "description": "Gnome Tweaks",
+        "category": "Tools",
+        "icon_url": "/static/images/gnome-tweak-tool-icon.png",
+        "installers": {
+            "apt": {
+                "pre_install": [],
+                "package_name": "apt-get install gnome-tweaks",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "HTOP",
+        "description": "This is htop, a cross-platform interactive process viewer. It is a text-mode application (for console or X terminals) and requires ncurses.",
+        "category": "Tools",
+        "icon_url": "/static/images/htop.png",
+        "installers": {
+            "apt": {
+                "pre_install": [],
+                "package_name": "apt-get install htop",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "Bashtop",
+        "description": "Resource monitor that shows usage and stats for processor, memory, disks, network and processes.",
+        "category": "Tools",
+        "icon_url": "/static/images/htop.png",
+        "installers": {
+            "apt": {
+                "pre_install": [
+                    "add-apt-repository ppa:bashtop-monitor/bashtop",
+                    "apt update",
+                    "apt install bashtop"
+                ],
+                "package_name": "",
+                "post_install": []
+            }
+        }
+    }
 ]
