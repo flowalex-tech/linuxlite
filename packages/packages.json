@@ -106,7 +106,7 @@
 {
   "name": "Slack",
   "description": "Slack",
-  "category": "Messaging",
+  "category": "Productivity",
   "icon_url":"/static/images/slack-48.png",
   "installers": {"apt": {"pre_install": [
                           "apt-get -y install wget",
@@ -433,5 +433,14 @@
     "sudo apt update"],
                            "package_name": "obs-studio",
                            "post_install": []}}
+},
+{
+"name": "Bitwarden (flatpack)",
+"description": "Opensource Password Manager. This will install the flatpak version from flathub",
+"category": "Tools",
+"icon_url":"/static/images/bitwarden.png",
+"installers": {"apt": {"pre_install": ["flatpak install flathub com.bitwarden.desktop"],
+                       "package_name": "",
+                       "post_install": []}}
 }
 ]
