@@ -36,10 +36,15 @@ pylint:
 
 jsonlint:
   stage: Static Analysis
+  allow_failure: true
   image: pipelinecomponents/jsonlint:latest
   script:
-    - |
-      find . -not -path './.git/*' -name '*.json' -type f -print0 |
-      parallel --will-cite -k -0 -n1 jsonlint -q
+    -  packages/packages.json
   only:
     - merge_requests
+lint_dockerfile:
+  stage: Static Analysis
+  allow_failure: true
+  image: hadolint/hadolint:latest-debian
+  script:
+    - hadolint Dockerfile
