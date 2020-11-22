@@ -14,12 +14,12 @@
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="/static/js/installer.js"></script>
-    <title>Lilite | Linux Core Package Installer</title>
+    <title>Linux Core Package Installer</title>
   </head>
   <body>
     <div class="container">
       <div class="row">
-        <h1> Lilite: A Linux Autoinstaller</h1>
+        <h1> Linux Autoinstaller</h1>
         {% if not linux_ua %}
           <div class="alert alert-warning"> You do not appear to be on the linux OS. This site is most useful for linux users. </div>
         {% endif %}
@@ -29,20 +29,20 @@
         <div class="row">
           <h2> Select your linux version </h2>
           <label>
-            Ubuntu 18.04 (New!)
+            Ubuntu 20.04 (New!)
+            <input type="radio" name="version" value="ubuntu_20" required />
+          </label>
+          <label>
+            Ubuntu 18.04 
             <input type="radio" name="version" value="ubuntu_18" required />
           </label>
           <label>
             Ubuntu 16.04
             <input type="radio" name="version" value="ubuntu_16" required />
           </label>
-          <label>
-            Ubuntu 14.04
-            <input type="radio" name="version" value="ubuntu_14" required />
-          </label>
           <div class="alert alert-info">
             More version support coming soon! If you'd like to contribute, you can look here:
-            <a href="https://github.com/cmoscardi/package-installer"> Github project </a>
+            <a href="https://gitlab.com/flowalex/linuxlite"> Gitlab project </a>
           </div>
         </div>
         <hr /> <div class="row">

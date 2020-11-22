@@ -1,0 +1,45 @@
+image: "python:3.7"
+
+before_script:
+  - python --version
+  - pip install -r requirements.txt
+
+stages:
+  - Static Analysis
+  - Test
+
+mypy:
+  stage: Static Analysis
+  allow_failure: true
+  script:
+  - pwd
+  - ls -l
+  - python -m mypy --ignore-missing-imports */*.py
+  only:
+    - merge_requests
+
+flake8:
+  stage: Static Analysis
+  allow_failure: true
+  script:
+    - flake8 --max-line-length=120 */*.py
+  only:
+    - merge_requests
+
+pylint:
+  stage: Static Analysis
+  allow_failure: true
+  script:
+    - pylint -d C0301 */*.py
+  only:
+    - merge_requests
+
+jsonlint:
+  stage: Static Analysis
+  image: pipelinecomponents/jsonlint:latest
+  script:
+    - |
+      find . -not -path './.git/*' -name '*.json' -type f -print0 |
+      parallel --will-cite -k -0 -n1 jsonlint -q
+  only:
+    - merge_requests

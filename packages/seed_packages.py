@@ -10,19 +10,19 @@ from sqlalchemy.ext.declarative import declarative_base
 from models import register_models
 
 def load_json():
-  try:
-    os.chdir("packages")
-    sub = True
-  except:
-    sub = False
+    try:
+      os.chdir("packages")
+      sub = True
+    except:
+      sub = False
 
-  with open("packages.json") as json_f:
-    packages = json.load(json_f)
+    with open("packages.json") as json_f:
+      packages = json.load(json_f)
 
-  if sub:
-    os.chdir("..")
+    if sub:
+      os.chdir("..")
 
-  return packages
+    return packages
 
 def init_db(uri):
     engine = create_engine(uri, convert_unicode=True)
@@ -42,7 +42,7 @@ def convert_icons():
 
 def print_stderr(s):
   import sys
-  print >>sys.stderr, s
+  print(s, sys.stderr)
 
 def parse_packages(package_list, db_session, Package, InstallMethod):
   packages = db_session.query(Package).delete()
@@ -54,10 +54,10 @@ def parse_packages(package_list, db_session, Package, InstallMethod):
     print_stderr(str(e))
     db_session.rollback()
 
-  print_stderr( "======" * 3)
+  print_stderr( "========================")
   print_stderr( "deleting {} packages".format(packages))
   print_stderr( "deleting {} install_methods".format(install_methods))
-  print_stderr( "======" * 3)
+  print_stderr( "========================")
   methods_by_package = defaultdict(list)
 
   for p in package_list:
@@ -66,7 +66,7 @@ def parse_packages(package_list, db_session, Package, InstallMethod):
                     icon_url=p['icon_url'],
                     category=p['category'])
     methods = []
-    for t, c in p['installers'].iteritems():
+    for t, c in p['installers'].items():
       m = InstallMethod(method_type=t,
                         pre_install="\n".join(c['pre_install']),
                         package_name=c['package_name'],
