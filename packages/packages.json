@@ -983,5 +983,35 @@
                 "post_install": []
             }
         }
+    },
+    {
+        "name": "IntelliJ Idea CE (flatpak)",
+        "description": "Capable and Ergonomic Java IDE from JetBrains.  This will install the flatpak version",
+        "category": "Programming",
+        "icon_url": "/static/images/IntelliJ-IDEA.png",
+        "installers": {
+            "apt": {
+                "pre_install": [
+                    "flatpak install flathub com.jetbrains.IntelliJ-IDEA-Community"
+                ],
+                "package_name": "",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "Pycharm CE (flatpak)",
+        "description": "The most intelligent Python IDE from JetBrains.  This will install the flatpak version",
+        "category": "Programming",
+        "icon_url": "/static/images/PyCharm.png",
+        "installers": {
+            "apt": {
+                "pre_install": [
+                    "flatpak install flathub com.jetbrains.PyCharm-Community"
+                ],
+                "package_name": "",
+                "post_install": []
+            }
+        }
     }
 ]
