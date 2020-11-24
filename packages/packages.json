@@ -882,5 +882,106 @@
                 "post_install": []
             }
         }
+    },
+    {
+        "name": "Netdata",
+        "description": "Real-time performance monitoring, done right!",
+        "category": "Tools",
+        "icon_url": "/static/images/netdata.png",
+        "installers": {
+            "apt": {
+                "pre_install": [
+                    "bash <(curl -Ss https://my-netdata.io/kickstart.sh)"
+                ],
+                "package_name": "",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "Handbrake",
+        "description": "HandBrake is a tool for converting video from nearly any format to a selection of modern, widely supported codecs.",
+        "category": "Media",
+        "icon_url": "/static/images/sublime_merge-48.png",
+        "installers": {
+            "apt": {
+                "pre_install": [
+                    "add-apt-repository ppa:stebbins/handbrake-releases -y",
+                    "sudo apt-get update",
+                    "apt install --install-recommends handbrake-gtk"
+                ],
+                "package_name": "clipgrab",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "Quickdocs (flatpak)",
+        "description": "Powerful and simple to use screenshot software.  This will install the flatpak version",
+        "category": "Programming",
+        "icon_url": "/static/images/quickdocs.png",
+        "installers": {
+            "apt": {
+                "pre_install": [
+                    "flatpak install flathub com.github.mdh34.quickdocs"
+                ],
+                "package_name": "",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "Mainline",
+        "description": "This is a tool for installing the latest mainline Linux kernel on Ubuntu-based distributions",
+        "category": "Tools",
+        "icon_url": "/static/images/Tux.png",
+        "installers": {
+            "apt": {
+                "pre_install": [
+                    "add-apt-repository ppa:cappelikan/ppa -y",
+                    "sudo apt-get update",
+                    "apt install mainline"
+                ],
+                "package_name": "",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "Postman (flatpak)",
+        "description": "Postman is a complete API development environment.  This will install the flatpak version",
+        "category": "Programming",
+        "icon_url": "/static/images/Postman.png",
+        "installers": {
+            "apt": {
+                "pre_install": [
+                    "flatpak install flathub com.getpostman.Postman"
+                ],
+                "package_name": "",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "Lutris And Wine",
+        "description": "This will install Lutris and will install Wine at the same time",
+        "category": "Games",
+        "icon_url": "/static/images/Lutrus.png",
+        "installers": {
+            "apt": {
+                "pre_install": [
+                    "sudo dpkg --add-architecture i386",
+                    "wget -nc https://dl.winehq.org/wine-builds/winehq.key",
+                    "sudo apt-key add winehq.key",
+                    "sudo apt-add-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ focal main'",
+                    "sudo apt update",
+                    "sudo apt install --install-recommends winehq-stable",
+                    "sudo add-apt-repository ppa:lutris-team/lutris",
+                    "sudo apt update"
+                ],
+                "package_name": "lutris",
+                "post_install": []
+            }
+        }
     }
 ]
