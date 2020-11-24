@@ -902,7 +902,7 @@
         "name": "Handbrake",
         "description": "HandBrake is a tool for converting video from nearly any format to a selection of modern, widely supported codecs.",
         "category": "Media",
-        "icon_url": "/static/images/sublime_merge-48.png",
+        "icon_url": "/static/images/HandBrake.png",
         "installers": {
             "apt": {
                 "pre_install": [
