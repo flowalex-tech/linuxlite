@@ -110,7 +110,7 @@
         "installers": {
             "apt": {
                 "pre_install": [
-                    "flatpak install flathub com.spotify.Client"
+                    "flatpak install flathub com.spotify.Client -y"
                 ],
                 "package_name": "",
                 "post_install": []
@@ -128,7 +128,7 @@
                     "apt-get -y install curl konsole zenity wget software-properties-common debconf-utils python-apt",
                     "dpkg --add-architecture i386",
                     "apt-get update",
-                    "add-apt-repository multiverse",
+                    "add-apt-repository multiverse -y",
                     "apt purge steam steamcmd || exit 0",
                     "echo -e 'steam\tsteam/question\tselect\tI AGREE' | debconf-set-selections",
                     "echo -e 'steam\tsteam/license\tnote\t' | debconf-set-selections",
@@ -178,23 +178,14 @@
         }
     },
     {
-        "name": "Slack",
-        "description": "Slack",
+        "name": "Slack (Flatpak)",
+        "description": "Slack, requires flatpak to be installed",
         "category": "Productivity",
         "icon_url": "/static/images/slack-48.png",
         "installers": {
             "apt": {
                 "pre_install": [
-                    "apt-get -y install wget",
-                    "apt-get -y install gvfs-bin",
-                    "apt-get -y install apt-transport-https",
-                    "apt-get -y install libxss1",
-                    "apt-get -y install libappindicator1",
-                    "apt-get -y install libcurl3 gconf2",
-                    "apt-get -y install gir1.2-gnomekeyring-1.0",
-                    "wget https://downloads.slack-edge.com/linux_releases/slack-desktop-2.6.2-amd64.deb",
-                    "dpkg -i slack-desktop-2.6.2-amd64.deb",
-                    "rm slack-desktop-2.6.2-amd64.deb"
+                    "flatpak install flathub com.slack.Slack -y"
                 ],
                 "package_name": "",
                 "post_install": []
@@ -693,7 +684,7 @@
         "installers": {
             "apt": {
                 "pre_install": [
-                    "flatpak install flathub com.bitwarden.desktop"
+                    "flatpak install flathub com.bitwarden.desktop -y"
                 ],
                 "package_name": "",
                 "post_install": []
@@ -708,7 +699,7 @@
         "installers": {
             "apt": {
                 "pre_install": [
-                    "flatpak install flathub org.darktable.Darktable"
+                    "flatpak install flathub org.darktable.Darktable -y"
                 ],
                 "package_name": "",
                 "post_install": []
@@ -723,7 +714,7 @@
         "installers": {
             "apt": {
                 "pre_install": [
-                    "flatpak install flathub org.darktable.Darktable"
+                    "flatpak install flathub org.darktable.Darktable -y"
                 ],
                 "package_name": "",
                 "post_install": []
@@ -738,7 +729,7 @@
         "installers": {
             "apt": {
                 "pre_install": [
-                    "flatpak install flathub com.discordapp.Discord"
+                    "flatpak install flathub com.discordapp.Discord -y"
                 ],
                 "package_name": "",
                 "post_install": []
@@ -753,7 +744,7 @@
         "installers": {
             "apt": {
                 "pre_install": [
-                    "flatpak install flathub com.discordapp.Discord"
+                    "flatpak install flathub com.discordapp.Discord -y"
                 ],
                 "package_name": "",
                 "post_install": []
@@ -768,7 +759,7 @@
         "installers": {
             "apt": {
                 "pre_install": [
-                    "flatpak install flathub org.gnome.Podcasts"
+                    "flatpak install flathub org.gnome.Podcasts -y"
                 ],
                 "package_name": "",
                 "post_install": []
@@ -783,7 +774,7 @@
         "installers": {
             "apt": {
                 "pre_install": [
-                    "flatpak install flathub org.flameshot.Flameshot"
+                    "flatpak install flathub org.flameshot.Flameshot -y"
                 ],
                 "package_name": "",
                 "post_install": []
@@ -799,9 +790,9 @@
             "apt": {
                 "pre_install": [
                     "wget -qO- https://repo.vivaldi.com/archive/linux_signing_key.pub | sudo apt-key add -",
-                    "add-apt-repository 'deb https://repo.vivaldi.com/archive/deb/ stable main'",
+                    "add-apt-repository 'deb https://repo.vivaldi.com/archive/deb/ stable main' -y",
                     "apt update",
-                    "apt install vivaldi-stable"
+                    "apt-get install -y vivaldi-stable"
                 ],
                 "package_name": "",
                 "post_install": []
@@ -816,7 +807,7 @@
         "installers": {
             "apt": {
                 "pre_install": [],
-                "package_name": "apt-get install solaar",
+                "package_name": "solaar",
                 "post_install": []
             }
         }
@@ -848,7 +839,7 @@
         "installers": {
             "apt": {
                 "pre_install": [],
-                "package_name": "apt-get install gnome-tweaks",
+                "package_name": "gnome-tweaks",
                 "post_install": []
             }
         }
@@ -861,7 +852,7 @@
         "installers": {
             "apt": {
                 "pre_install": [],
-                "package_name": "apt-get install htop",
+                "package_name": "htop",
                 "post_install": []
             }
         }
@@ -874,9 +865,140 @@
         "installers": {
             "apt": {
                 "pre_install": [
-                    "add-apt-repository ppa:bashtop-monitor/bashtop",
+                    "add-apt-repository -y ppa:bashtop-monitor/bashtop",
                     "apt update",
-                    "apt install bashtop"
+                    "apt-get install -y bashtop"
+                ],
+                "package_name": "",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "Netdata",
+        "description": "Real-time performance monitoring, done right!",
+        "category": "Tools",
+        "icon_url": "/static/images/netdata.png",
+        "installers": {
+            "apt": {
+                "pre_install": [
+                    "bash <(curl -Ss https://my-netdata.io/kickstart.sh)"
+                ],
+                "package_name": "",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "Handbrake",
+        "description": "HandBrake is a tool for converting video from nearly any format to a selection of modern, widely supported codecs.",
+        "category": "Media",
+        "icon_url": "/static/images/HandBrake.png",
+        "installers": {
+            "apt": {
+                "pre_install": [
+                    "add-apt-repository ppa:stebbins/handbrake-releases -y",
+                    "sudo apt-get update",
+                    "apt install --install-recommends handbrake-gtk"
+                ],
+                "package_name": "clipgrab",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "Quickdocs (flatpak)",
+        "description": "Powerful and simple to use screenshot software.  This will install the flatpak version",
+        "category": "Programming",
+        "icon_url": "/static/images/quickdocs.png",
+        "installers": {
+            "apt": {
+                "pre_install": [
+                    "flatpak install flathub com.github.mdh34.quickdocs -y"
+                ],
+                "package_name": "",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "Mainline",
+        "description": "This is a tool for installing the latest mainline Linux kernel on Ubuntu-based distributions",
+        "category": "Tools",
+        "icon_url": "/static/images/Tux.png",
+        "installers": {
+            "apt": {
+                "pre_install": [
+                    "add-apt-repository ppa:cappelikan/ppa -y",
+                    "sudo apt-get update",
+                    "apt install -y mainline"
+                ],
+                "package_name": "",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "Postman (flatpak)",
+        "description": "Postman is a complete API development environment.  This will install the flatpak version",
+        "category": "Programming",
+        "icon_url": "/static/images/Postman.png",
+        "installers": {
+            "apt": {
+                "pre_install": [
+                    "flatpak install flathub com.getpostman.Postman -y"
+                ],
+                "package_name": "",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "Lutris And Wine",
+        "description": "This will install Lutris and will install Wine at the same time",
+        "category": "Games",
+        "icon_url": "/static/images/Lutrus.png",
+        "installers": {
+            "apt": {
+                "pre_install": [
+                    "sudo dpkg --add-architecture i386",
+                    "wget -nc https://dl.winehq.org/wine-builds/winehq.key",
+                    "sudo apt-key add winehq.key",
+                    "sudo apt-add-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ focal main' -y",
+                    "sudo apt update",
+                    "sudo apt install --install-recommends -y winehq-stable",
+                    "sudo add-apt-repository ppa:lutris-team/lutris -y",
+                    "sudo apt update"
+                ],
+                "package_name": "lutris",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "IntelliJ Idea CE (flatpak)",
+        "description": "Capable and Ergonomic Java IDE from JetBrains.  This will install the flatpak version",
+        "category": "Programming",
+        "icon_url": "/static/images/IntelliJ-IDEA.png",
+        "installers": {
+            "apt": {
+                "pre_install": [
+                    "flatpak install flathub com.jetbrains.IntelliJ-IDEA-Community -y"
+                ],
+                "package_name": "",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "Pycharm CE (flatpak)",
+        "description": "The most intelligent Python IDE from JetBrains.  This will install the flatpak version",
+        "category": "Programming",
+        "icon_url": "/static/images/PyCharm.png",
+        "installers": {
+            "apt": {
+                "pre_install": [
+                    "flatpak install flathub com.jetbrains.PyCharm-Community -y"
                 ],
                 "package_name": "",
                 "post_install": []

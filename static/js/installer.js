@@ -1,6 +1,17 @@
 var origin = window.location.origin;
 
 $(function(){
+  $('#selectAll').click(function() {
+    if (this.checked) {
+        $(':checkbox').each(function() {
+            this.checked = true;
+        });
+    } else {
+       $(':checkbox').each(function() {
+            this.checked = false;
+        });
+    }
+  });
   $("form").submit(function(){
     if(ga){
       console.log("ga present");
@@ -15,9 +26,11 @@ $(function(){
       });
     }
     var url = origin + "/get_installer?" + $(this).serialize();
-    var command = "sudo apt-get install curl; curl '" + url + "' | sudo bash";
+    var command = "sudo apt-get install -y curl; curl '" + url + "' | sudo bash";
     $("#command-row pre").empty();
     $("#command-row pre").append(command);
+    $("#command-row span").empty();
+    $("#command-row span").append("<a href='"+url+"'>script link</a>");
     $("#command-row").show();
     return false;
   });

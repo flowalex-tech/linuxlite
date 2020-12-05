@@ -1,8 +1,5 @@
-image: "python:3.7"
+image: "python:3.8"
 
-before_script:
-  - python --version
-  - pip install -r requirements.txt
 
 stages:
   - Static Analysis
@@ -12,6 +9,8 @@ mypy:
   stage: Static Analysis
   allow_failure: true
   script:
+  - python --version
+  - pip install -r requirements.txt
   - pwd
   - ls -l
   - python -m mypy --ignore-missing-imports */*.py
@@ -22,6 +21,8 @@ flake8:
   stage: Static Analysis
   allow_failure: true
   script:
+    - python --version
+    - pip install -r requirements.txt
     - flake8 --max-line-length=120 */*.py
   only:
     - merge_requests
@@ -30,16 +31,25 @@ pylint:
   stage: Static Analysis
   allow_failure: true
   script:
+  - python --version
+  - pip install -r requirements.txt
     - pylint -d C0301 */*.py
   only:
     - merge_requests
 
 jsonlint:
   stage: Static Analysis
+  allow_failure: true
   image: pipelinecomponents/jsonlint:latest
   script:
-    - |
-      find . -not -path './.git/*' -name '*.json' -type f -print0 |
-      parallel --will-cite -k -0 -n1 jsonlint -q
+    -  packages/packages.json
+  only:
+    - merge_requests
+lint_dockerfile:
+  stage: Static Analysis
+  allow_failure: true
+  image: hadolint/hadolint:latest-debian
+  script:
+    - hadolint Dockerfile
   only:
     - merge_requests
