@@ -56,6 +56,10 @@ def index():
         linux_ua = False
     return render_template('index.html', packages=packages, linux_ua=linux_ua)
 
+@app.route('/support')
+def support():
+    return render_template("support.html")
+
 Base, db_session, Package, InstallMethod = set_db(config)
 register_package_creator(app,
                          db_session,
