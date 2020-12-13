@@ -1,9 +1,10 @@
-from collections import defaultdict 
+from collections import defaultdict
 
 from flask import request, render_template, Response
 
-NULL_SCRIPT="""#!/bin/bash
+NULL_SCRIPT = """#!/bin/bash
 echo 'Either no OS version, or no packages, specified.'"""
+
 
 def register_package_creator(app,
                              db_session,
@@ -41,5 +42,5 @@ def register_package_creator(app,
             else:
                 weird.append((method.pre_install, method.package_name, method.post_install))
         path = "script.sh"
-        resp= render_template(path, standard=standard, weird=weird)
+        resp = render_template(path, standard=standard, weird=weird)
         return Response(resp, mimetype="text/plain")
