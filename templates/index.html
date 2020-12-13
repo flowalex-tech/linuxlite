@@ -8,18 +8,31 @@
     </style>
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Lilite provides a list of core packages and gives you an autoinstaller, to make setting up new computers with Linux easy!">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <meta name="description" content="Package Installer provides a list of core packages and gives you an autoinstaller, to make setting up new computers with Linux easy!">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/solar/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script>
     <script src="/static/js/installer.js"></script>
     <title>Linux Core Package Installer</title>
   </head>
   <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Linux Auto Installer</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-item nav-link" href="/support">Support</a>
+        </div>
+      </div>
+    </nav>
     <div class="container">
       <div class="row">
-        <h1> Linux Autoinstaller</h1>
         {% if not linux_ua %}
           <div class="alert alert-warning"> You do not appear to be on the linux OS. This site is most useful for linux users. </div>
         {% endif %}
@@ -28,6 +41,9 @@
       <form method="GET" action="/get_installer">
         <div class="row">
           <h2> Select your linux version </h2>
+        </div>
+        <div class="row">
+          <div>
           <label>
             Ubuntu 20.04 (New!)
             <input type="radio" name="version" value="ubuntu_20" required />
@@ -40,14 +56,21 @@
             Ubuntu 16.04
             <input type="radio" name="version" value="ubuntu_16" required />
           </label>
+        </div>
+        </div>
+        <div>
           <div class="alert alert-info">
             More version support coming soon! If you'd like to contribute, you can look here:
-            <a href="https://gitlab.com/flowalex/linuxlite"> Gitlab project </a>
+            <a href="https://gitlab.com/flowalex/linux_package_installer"> Gitlab project </a>
           </div>
         </div>
         <hr /> <div class="row">
           <h2> Select your packages </h2>
+          </div>
+          <div class="row">
           <input type="checkbox" id="selectAll" value="selectAll"> Select / Deselect All<br/><br/>
+          </div>
+          <div class="row">
           {% set max_per_column = 5 %}
           {% for category, p in packages %}
             <div class="col-sm-4 col-xs-12">
@@ -68,14 +91,14 @@
         </div>
         <div class="row mt15">
           <div class="col-sm-8 col-xs-12 col-sm-offset-2 alert alert-info">
-            Don't see a package that you're looking for? Submit an <a href="https://gitlab.com/flowalex/linuxlite"> issue on Gitlab</a> or email <a href="mailto:incoming+flowalex-linuxlite-21835474-issue-@incoming.gitlab.com">Linuxlite service Desk</a>!
+            Don't see a package that you're looking for? Submit an <a href="https://gitlab.com/flowalex/linux_package_installer/-/issues"> issue on Gitlab</a> or email <a href="mailto:incoming+flowalex-linux-package-installer-21835474-issue-@incoming.gitlab.com">Package Installer Service Desk</a>!
           </div>
         </div>
         <hr />
         <div class="row">
           <div class="col-xs-12 col-sm-4">
             <p> Get your specific link and install packages. </p>
-            <input type="submit" class="btn btn-submit" style="font-size: 20px;" value="Install your packages"/>
+            <input type="submit" class="btn btn-primary" style="font-size: 20px;" value="Install your packages"/>
           </div>
           <div style="display: none; border-left: 1px solid black;" id="command-row" class="col-xs-12 col-sm-8">
           <h3> Copy the following command: </h3>
@@ -88,7 +111,16 @@
         </div>
       </form>
       <hr style="margin-bottom: 40px; margin-top: 40px;"/>
-      <style>.bmc-button img{width: 27px !important;margin-bottom: 1px !important;box-shadow: none !important;border: none !important;vertical-align: middle !important;}.bmc-button{line-height: 36px !important;height:37px !important;text-decoration: none !important;display:inline-flex !important;color:#ffffff !important;background-color:#FF813F !important;border-radius: 3px !important;border: 1px solid transparent !important;padding: 0px 9px !important;font-size: 17px !important;letter-spacing:-0.08px !important;;box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;margin: 0 auto !important;font-family:'Lato', sans-serif !important;-webkit-box-sizing: border-box !important;box-sizing: border-box !important;-o-transition: 0.3s all linear !important;-webkit-transition: 0.3s all linear !important;-moz-transition: 0.3s all linear !important;-ms-transition: 0.3s all linear !important;transition: 0.3s all linear !important;}.bmc-button:hover, .bmc-button:active, .bmc-button:focus {-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;text-decoration: none !important;box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;opacity: 0.85 !important;color:#ffffff !important;}</style><link href="https://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext" rel="stylesheet"><div style="text-align: center;"><a class="bmc-button" target="_blank" href="https://www.buymeacoffee.com/flowalex"><img src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg" alt="Buy me a coffee"><span style="margin-left:5px">Like lilite? Buy me a coffee</span></a></div>
+      <style>.bmc-button img{width: 27px !important;margin-bottom: 1px !important;box-shadow: none !important;border: none !important;vertical-align: middle !important;}.bmc-button{line-height: 36px !important;height:37px !important;text-decoration: none !important;display:inline-flex !important;color:#ffffff !important;background-color:#FF813F !important;border-radius: 3px !important;border: 1px solid transparent !important;padding: 0px 9px !important;font-size: 17px !important;letter-spacing:-0.08px !important;;box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;margin: 0 auto !important;font-family:'Lato', sans-serif !important;-webkit-box-sizing: border-box !important;box-sizing: border-box !important;-o-transition: 0.3s all linear !important;-webkit-transition: 0.3s all linear !important;-moz-transition: 0.3s all linear !important;-ms-transition: 0.3s all linear !important;transition: 0.3s all linear !important;}.bmc-button:hover, .bmc-button:active, .bmc-button:focus {-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;text-decoration: none !important;box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;opacity: 0.85 !important;color:#ffffff !important;}</style><link href="https://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext" rel="stylesheet"><div style="text-align: center;"><a class="bmc-button" target="_blank" href="https://www.buymeacoffee.com/flowalex"><img src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg" alt="Buy me a coffee"><span style="margin-left:5px">Like Package Instaler? Buy me a coffee</span></a></div>
     </div>
   </body>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-100620007-1', 'auto');
+    ga('send', 'pageview');
+    </script>
 </html>
