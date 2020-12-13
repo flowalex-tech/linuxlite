@@ -56,15 +56,19 @@ pylint:
     - merge_requests
 
 jsonlint:
-  stage: Static Analysis
-  allow_failure: true
-  image: pipelinecomponents/jsonlint:latest
-  script:
-    -  packages/packages.json
+  stage: lint
+  variables:
+    jsonlint_version: "latest"
+  image: peterdavehello/jsonlint:$jsonlint_version
   only:
-    - merge_requests
+    changes:
+      - "**/*.json"
+      - merge_requests
+  script:
+    - find . -name "*.json" | xargs -n 1 jsonlint -q
+
 lint_dockerfile:
-  stage: Static Analysis
+  stage: lint
   allow_failure: true
   image: hadolint/hadolint:latest-debian
   script:
