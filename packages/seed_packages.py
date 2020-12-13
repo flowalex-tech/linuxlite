@@ -2,6 +2,7 @@ from collections import defaultdict
 import json
 import os
 import subprocess
+import sys
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
@@ -40,24 +41,20 @@ def convert_icons():
   subprocess.check_call("./convert.sh")
   os.chdir("../..")
 
-def print_stderr(s):
-  import sys
-  print(s, sys.stderr)
-
 def parse_packages(package_list, db_session, Package, InstallMethod):
   packages = db_session.query(Package).delete()
   install_methods = db_session.query(InstallMethod).delete()
   try:
     db_session.commit()
   except Exception as e:
-    print_stderr("FAILED!")
-    print_stderr(str(e))
+    print("FAILED!", file=sys.stderr)
+    print(str(e), file=sys.stderr)
     db_session.rollback()
 
-  print_stderr( "========================")
-  print_stderr( "deleting {} packages".format(packages))
-  print_stderr( "deleting {} install_methods".format(install_methods))
-  print_stderr( "========================")
+  print( "========================", file=sys.stderr)
+  print( "deleting {} packages".format(packages), file=sys.stderr)
+  print( "deleting {} install_methods".format(install_methods),  file=sys.stderr)
+  print( "========================", file=sys.stderr)
   methods_by_package = defaultdict(list)
 
   for p in package_list:
