@@ -1,6 +1,7 @@
 from sqlalchemy import Column, Integer, String, Text, ForeignKey
 from sqlalchemy.orm import relationship
 
+
 def register_models(Base):
     class Package(Base):
         __tablename__ = "packages"
@@ -10,9 +11,8 @@ def register_models(Base):
         category = Column(String(100))
         description = Column(Text())
         icon_url = Column(String(100))
-        
-        install_methods = relationship("InstallMethod", cascade="all, delete-orphan", single_parent=True)
 
+        install_methods = relationship("InstallMethod", cascade="all, delete-orphan", single_parent=True)
 
     class InstallMethod(Base):
         ALLOWED_INSTALLERS_BY_VERSION = {

@@ -2,6 +2,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 
+
 def create_connection(config):
     engine = create_engine(config["DB_URI"], convert_unicode=True)
     db_session = scoped_session(sessionmaker(autocommit=False,
@@ -10,6 +11,7 @@ def create_connection(config):
     Base = declarative_base()
     Base.query = db_session.query_property()
     return Base, db_session, engine
+
 
 def init_db(Base, engine):
     # import all modules here that might define models so that
