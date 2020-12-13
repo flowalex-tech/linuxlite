@@ -61,8 +61,6 @@ jsonlint:
     jsonlint_version: "latest"
   image: peterdavehello/jsonlint:$jsonlint_version
   only:
-    changes:
-      - "**/*.json"
       - merge_requests
   script:
     - find . -name "*.json" | xargs -n 1 jsonlint -q
