@@ -1,13 +1,18 @@
-# Lilite: A Linux Package Auto-installer
+# Linux Package Auto-installer
 
-[https://www.lilite.co](https://www.lilite.co)
+A fork of [https://www.lilite.co](https://www.lilite.co)
 
-[![Build Status](https://travis-ci.org/cmoscardi/lilite.svg?branch=master)](https://travis-ci.org/cmoscardi/lilite)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=flowalex_linux_package_installer&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=flowalex_linux_package_installer)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=flowalex_linux_package_installer&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=flowalex_linux_package_installer)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=flowalex_linux_package_installer&metric=security_rating)](https://sonarcloud.io/dashboard?id=flowalex_linux_package_installer)
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=flowalex_linux_package_installer&metric=sqale_index)](https://sonarcloud.io/dashboard?id=flowalex_linux_package_installer)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=flowalex_linux_package_installer&metric=bugs)](https://sonarcloud.io/dashboard?id=flowalex_linux_package_installer)
 
 ## Supported Linux versions
 
+- Ubuntu 20.04
+- Ubuntu 18.04
 - Ubuntu 16.04
-- Ubuntu 14.04
 
 If you're interested in building out support for another distro,
 let me know! Some of the infra for distro-specific install methods is WIP.
@@ -44,3 +49,5 @@ If you'd like to ensure everything is working before you send in a PR, then you 
 `sudo apt-get install curl; curl 'http://127.0.0.1:5000/get_installer?version=ubuntu_16&packages=<PACKAGE_NAME>' | sudo bash`
 6. Just run the curl command in your terminal and you'll see your script there. Ensure it's as intended.
 7. Make a PR
+
+[![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-black.svg)](https://sonarcloud.io/dashboard?id=flowalex_linux_package_installer)
