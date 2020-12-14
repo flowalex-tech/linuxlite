@@ -1,9 +1,10 @@
+# flake8: noqa
 import os
 from flask import Flask
 from flask.testing import FlaskClient
 
-from models import register_models
-from package_endpoint import register_package_creator
+from models import register_models # type: ignore
+from package_endpoint import register_package_creator # type: ignore
 import seed_packages as sp
 
 
@@ -21,8 +22,8 @@ def main():
     assert code == "200 OK"
     resp = "\n".join(resp)
     with open("test_script.sh", "w+") as test_f:
-        test_f.write(resp) 
- 
+        test_f.write(resp)
+
 def create_app_client():
     db_session, Package, InstallMethod = sp.init_db('sqlite:///test.db')
     app = Flask(__name__)
