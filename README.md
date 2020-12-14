@@ -7,7 +7,15 @@ A fork of [https://www.lilite.co](https://www.lilite.co)
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=flowalex_linux_package_installer&metric=security_rating)](https://sonarcloud.io/dashboard?id=flowalex_linux_package_installer)
 [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=flowalex_linux_package_installer&metric=sqale_index)](https://sonarcloud.io/dashboard?id=flowalex_linux_package_installer)
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=flowalex_linux_package_installer&metric=bugs)](https://sonarcloud.io/dashboard?id=flowalex_linux_package_installer)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=flowalex_linux_package_installer&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=flowalex_linux_package_installer)
+![Gitlab pipeline status](https://img.shields.io/gitlab/pipeline/flowalex/linux_package_installer/dev?label=Dev%20Build)
+![Gitlab pipeline status](https://img.shields.io/gitlab/pipeline/flowalex/linux_package_installer/mainline?label=mainline%20Build)
 
+## Versions
+* Latest Release: ![Docker Image Version (latest semver)](https://img.shields.io/docker/v/flowalex/linux_package_installer?color=blue&sort=semver):
+    * Size: ![Docker Image Size (latest semver)](https://img.shields.io/docker/image-size/flowalex/linux_package_installer?sort=semver)
+* Latest Dev image: ![Docker Image Version (latest by date)](https://img.shields.io/docker/v/flowalex/linux_package_installer)
+    * Size:![Docker Image Size (tag)](https://img.shields.io/docker/image-size/flowalex/linux_package_installer/latest)
 ## Supported Linux versions
 
 - Ubuntu 20.04
