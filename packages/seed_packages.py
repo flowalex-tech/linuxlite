@@ -1,4 +1,4 @@
-from collections import defaultdict
+from collections import defaultdict      # noqa: F401
 import json
 import os
 import subprocess
@@ -8,7 +8,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 
-from models import register_models
+from models import register_models  # type: ignore
 
 
 def load_json():
