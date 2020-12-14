@@ -3,8 +3,8 @@ import os
 from flask import Flask
 from flask.testing import FlaskClient
 
-from models import register_models
-from package_endpoint import register_package_creator
+from models import register_models # type: ignore
+from package_endpoint import register_package_creator # type: ignore
 import seed_packages as sp
 
 
