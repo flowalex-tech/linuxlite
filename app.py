@@ -27,9 +27,9 @@ def set_db(config):
     init_db(Base, engine)
     return Base, db_session, Package, InstallMethod
 
-    @app.teardown_appcontext
-    def shutdown_session(exception=None):
-        db_session.remove()
+@app.teardown_appcontext
+def shutdown_session(exception=None):
+    db_session.remove()
 
 
 @app.route("/.well-known/acme-challenge/2KNoLJFbdqcKw-kp7AdoMz7NIBMjphtVCCzvzWqXo9A")
