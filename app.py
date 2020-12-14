@@ -17,6 +17,8 @@ else:
 app = Flask(__name__,
             static_url_path='/static',
             template_folder='templates')
+app.config['WTF_CSRF_ENABLED'] = False # Sensitive
+
 
 
 def set_db(config):
