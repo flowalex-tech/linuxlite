@@ -59,7 +59,6 @@ def parse_packages(package_list, db_session, Package, InstallMethod):
   print("deleting {} packages".format(packages), file=sys.stderr)
   print("deleting {} install_methods".format(install_methods), file=sys.stderr)
   print("========================", file=sys.stderr)
-  methods_by_package = defaultdict(list)    # noqa: F841
 
   for p in package_list:
     p_obj = Package(name=p['name'],
