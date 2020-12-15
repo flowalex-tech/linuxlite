@@ -1004,5 +1004,18 @@
                 "post_install": []
             }
         }
+    },
+    {
+        "name": "neofetch",
+        "description": "Neofetch displays information about your operating system, software and hardware in an aesthetic and visually pleasing way.",
+        "category": "Tools",
+        "icon_url": "/static/images/neofetch.png",
+        "installers": {
+            "apt": {
+                "pre_install": [],
+                "package_name": "htop",
+                "post_install": []
+            }
+        }
     }
 ]

@@ -65,6 +65,9 @@ def index():
 def support():
     return render_template("support.html")
 
+@app.route('/misc')
+def misc():
+    return render_template("misc.html")
 
 Base, db_session, Package, InstallMethod = set_db(config)
 register_package_creator(app,
