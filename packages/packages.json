@@ -1013,7 +1013,7 @@
         "installers": {
             "apt": {
                 "pre_install": [],
-                "package_name": "htop",
+                "package_name": "neofetch",
                 "post_install": []
             }
         }
