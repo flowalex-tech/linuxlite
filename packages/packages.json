@@ -1017,5 +1017,20 @@
                 "post_install": []
             }
         }
+    },
+    {
+        "name": "Blender (flatpak)",
+        "description": "Blender is the free and open source 3D creation suite.   This will install the flatpak version",
+        "category": "Graphics",
+        "icon_url": "/static/images/blender.png",
+        "installers": {
+            "apt": {
+                "pre_install": [
+                    "flatpak install flathub org.blender.Blender -y"
+                ],
+                "package_name": "",
+                "post_install": []
+            }
+        }
     }
 ]
