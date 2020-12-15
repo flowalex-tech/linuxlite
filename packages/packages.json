@@ -1004,5 +1004,33 @@
                 "post_install": []
             }
         }
+    },
+    {
+        "name": "neofetch",
+        "description": "Neofetch displays information about your operating system, software and hardware in an aesthetic and visually pleasing way.",
+        "category": "Tools",
+        "icon_url": "/static/images/neofetch.png",
+        "installers": {
+            "apt": {
+                "pre_install": [],
+                "package_name": "neofetch",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "Blender (flatpak)",
+        "description": "Blender is the free and open source 3D creation suite.   This will install the flatpak version",
+        "category": "Graphics",
+        "icon_url": "/static/images/blender.png",
+        "installers": {
+            "apt": {
+                "pre_install": [
+                    "flatpak install flathub org.blender.Blender -y"
+                ],
+                "package_name": "",
+                "post_install": []
+            }
+        }
     }
 ]
