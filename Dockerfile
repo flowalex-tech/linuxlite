@@ -7,12 +7,12 @@ RUN adduser -D lilite
 
 WORKDIR /home/lilite
 
-COPY requirements.txt requirements.txt
+COPY . .
 
 RUN python -m venv venv
 
 # hadolint ignore=DL3013
-RUN python -m pip install --no-cache-dir --upgrade pip
+RUN python -m ensurepip --upgrade && pip install --trusted-host pypi.python.org --upgrade setuptools pip
 
 RUN rm -rf /var/cache/apk/* && \
     rm -rf /tmp/*
@@ -22,11 +22,9 @@ RUN apk update && \
  apk add --no-cache postgresql-libs && \
  apk add --no-cache --virtual .build-deps gcc musl-dev postgresql-dev
 
-RUN python3 -m pip install --no-cache-dir -r requirements.txt
+RUN python3 -m pip install --no-cache-dir --trusted-host pypi.python.org -r requirements.txt
 
 RUN venv/bin/pip --no-cache-dir install gunicorn
-
-COPY . .
 
 RUN chmod +x boot.sh
 
