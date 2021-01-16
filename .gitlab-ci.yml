@@ -1,45 +1,86 @@
-image: "python:3.7"
+image: "python:3.9"
 
-before_script:
-  - python --version
-  - pip install -r requirements.txt
+variables:
+  SONAR_USER_HOME: "${CI_PROJECT_DIR}/.sonar"  # Defines the location of the analysis task cache
+  GIT_DEPTH: "0"  # Tells git to fetch all the branches of the project, required by the analysis task
 
 stages:
   - Static Analysis
   - Test
 
+sonarcloud-check:
+  stage: Static Analysis
+  image:
+    name: sonarsource/sonar-scanner-cli:latest
+    entrypoint: [""]
+  cache:
+    key: "${CI_JOB_NAME}"
+    paths:
+      - .sonar/cache
+  script:
+    - sonar-scanner
+  only:
+    - merge_requests
+    - dev
+    - mainline
+
 mypy:
   stage: Static Analysis
   allow_failure: true
   script:
+  - python --version
+  - pip install -r requirements.txt
   - pwd
   - ls -l
   - python -m mypy --ignore-missing-imports */*.py
   only:
     - merge_requests
+    - dev
+    - mainline
 
 flake8:
   stage: Static Analysis
   allow_failure: true
   script:
-    - flake8 --max-line-length=120 */*.py
+    - python --version
+    - pip install -r requirements.txt
+    - flake8 --ignore=E111 --max-line-length=120 */*.py
   only:
     - merge_requests
+    - dev
+    - mainline
 
 pylint:
   stage: Static Analysis
   allow_failure: true
   script:
+  - python --version
+  - pip install -r requirements.txt
     - pylint -d C0301 */*.py
   only:
     - merge_requests
+    - dev
+    - mainline
 
 jsonlint:
   stage: Static Analysis
-  image: pipelinecomponents/jsonlint:latest
+  variables:
+    jsonlint_version: "latest"
+  image: peterdavehello/jsonlint:$jsonlint_version
+  only:
+      - merge_requests
+      - dev
+      - mainline
   script:
-    - |
-      find . -not -path './.git/*' -name '*.json' -type f -print0 |
-      parallel --will-cite -k -0 -n1 jsonlint -q
+    - find . -name "*.json" | xargs -n 1 jsonlint -q
+
+lint_dockerfile:
+  stage: Static Analysis
+  allow_failure: true
+  image: hadolint/hadolint:latest-debian
+  script:
+    - hadolint Dockerfile
   only:
     - merge_requests
+    - dev
+    - mainline

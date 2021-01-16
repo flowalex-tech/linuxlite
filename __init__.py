@@ -1,2 +1,2 @@
-from .models import register_models
-from .package_endpoint import register_package_creator
+from .models import register_models     # noqa: F401
+from .package_endpoint import register_package_creator     # noqa: F401

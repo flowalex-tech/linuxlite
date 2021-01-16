@@ -1,19 +1,21 @@
-from collections import defaultdict
+from collections import defaultdict      # noqa: F401
 import json
 import os
 import subprocess
+import sys
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 
-from models import register_models
+from models import register_models  # type: ignore
+
 
 def load_json():
     try:
       os.chdir("packages")
       sub = True
-    except:
+    except:    # noqa: E722
       sub = False
 
     with open("packages.json") as json_f:
@@ -23,6 +25,7 @@ def load_json():
       os.chdir("..")
 
     return packages
+
 
 def init_db(uri):
     engine = create_engine(uri, convert_unicode=True)
@@ -35,14 +38,12 @@ def init_db(uri):
     Base.metadata.create_all(bind=engine)
     return db_session, Package, InstallMethod
 
+
 def convert_icons():
   os.chdir("static/images")
   subprocess.check_call("./convert.sh")
   os.chdir("../..")
 
-def print_stderr(s):
-  import sys
-  print(s, sys.stderr)
 
 def parse_packages(package_list, db_session, Package, InstallMethod):
   packages = db_session.query(Package).delete()
@@ -50,15 +51,14 @@ def parse_packages(package_list, db_session, Package, InstallMethod):
   try:
     db_session.commit()
   except Exception as e:
-    print_stderr("FAILED!")
-    print_stderr(str(e))
+    print("FAILED!", file=sys.stderr)
+    print(str(e), file=sys.stderr)
     db_session.rollback()
 
-  print_stderr( "========================")
-  print_stderr( "deleting {} packages".format(packages))
-  print_stderr( "deleting {} install_methods".format(install_methods))
-  print_stderr( "========================")
-  methods_by_package = defaultdict(list)
+  print("========================", file=sys.stderr)
+  print("deleting {} packages".format(packages), file=sys.stderr)
+  print("deleting {} install_methods".format(install_methods), file=sys.stderr)
+  print("========================", file=sys.stderr)
 
   for p in package_list:
     p_obj = Package(name=p['name'],
@@ -77,12 +77,13 @@ def parse_packages(package_list, db_session, Package, InstallMethod):
     [db_session.add(m) for m in methods]
     db_session.commit()
 
+
 def main(db_session, Package, InstallMethod):
   j = load_json()
   parse_packages(j, db_session, Package, InstallMethod)
 
+
 if __name__ == "__main__":
-  import sys
   if len(sys.argv) > 1:
     uri = sys.argv[1]
   else:

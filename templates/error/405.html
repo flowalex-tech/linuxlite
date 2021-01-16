@@ -1,0 +1,593 @@
+{% block content %}
+    <head>
+		<title>405</title>
+        <style>
+$sqSize: 12px;
+$contW: 180px;
+$contH: 300px;
+$xSpaces: 13;
+$ySpaces: 13;
+$zSpaces: 22;
+$xAngle: 90deg;
+$zAngle: 0deg;
+$prsp: 960px;
+$sqrt2: 1.414;
+
+// * Colors *
+$bk1: #131313;
+$bk2: #333;
+$w: #fff;
+$tl: #489899;
+
+$gridOn: false;
+// * Block placement *
+// parameters: x-pos,y-pos,z-pos, width,depth,height, color
+$blocks:
+	// bottom
+	(13,5,1, 1,5,3)
+	(12,3,1, 1,9,3)
+	(10,12,2, 2,1,1, $w)
+	(10,2,1, 2,11,1)
+	(10,2,2, 2,1,1, $w)
+	(5,13,2, 5,1,1, $w)
+	(5,1,1, 5,13,1)
+	(5,1,2, 5,1,1, $w)
+	(3,12,1, 2,1,1)
+	(3,12,2, 2,1,1, $w)
+	(2,3,1, 1,9,3)
+	(3,2,1, 2,11,1)
+	(3,2,2, 2,1,1, $w)
+	(1,5,1, 1,5,3)
+	(10,2,3, 2,11,1)
+	(5,1,3, 5,13,1)
+	(3,2,3, 2,11,1)
+
+	// right
+	(12,5,4, 1,5,5)
+	(11,5,8, 1,5,2)
+	(10,5,9, 1,5,2)
+	(9,5,10, 1,5,1)
+	(8,5,11, 2,5,2)
+	(9,5,13, 1,5,1)
+	(10,5,13, 1,5,2)
+	(11,5,14, 1,5,2)
+	(12,5,15, 1,5,5)
+
+	// left
+	(2,5,4, 1,5,5)
+	(3,5,8, 1,5,2)
+	(4,5,9, 1,5,2)
+	(5,5,10, 1,5,1)
+	(5,5,11, 2,5,2)
+	(5,5,13, 1,5,1)
+	(4,5,13, 1,5,2)
+	(3,5,14, 1,5,2)
+	(2,5,15, 1,5,5)
+
+	// top
+	(13,5,20, 1,5,3)
+	(12,3,20, 1,9,3)
+	(10,12,21, 2,1,1, $w)
+	(10,2,20, 2,11,1)
+	(10,2,21, 2,1,1, $w)
+	(5,13,21, 5,1,1, $w)
+	(5,1,20, 5,13,1)
+	(5,1,21, 5,1,1, $w)
+	(3,12,20, 2,1,1)
+	(3,12,21, 2,1,1, $w)
+	(2,3,20, 1,9,3)
+	(3,2,20, 2,11,1)
+	(3,2,21, 2,1,1, $w)
+	(1,5,20, 1,5,3)
+	(10,2,22, 2,11,1)
+	(5,1,22, 5,13,1)
+	(3,2,22, 2,11,1)
+
+	// sand
+	(10,4,4, 1,1,1)
+	(10,6,4, 1,1,1)
+	(10,8,4, 1,1,1)
+	(10,10,4, 1,1,1)
+	(8,4,4, 1,1,1)
+	(8,6,4, 1,1,1)
+	(8,8,4, 1,1,1)
+	(8,10,4, 1,1,1)
+	(6,4,4, 1,1,1)
+	(6,6,4, 1,1,1)
+	(6,8,4, 1,1,1)
+	(6,10,4, 1,1,1)
+	(4,4,4, 1,1,1)
+	(4,6,4, 1,1,1)
+	(4,8,4, 1,1,1)
+	(4,10,4, 1,1,1)
+
+	(9,5,5, 1,1,1)
+	(9,7,5, 1,1,1)
+	(9,9,5, 1,1,1)
+	(7,5,5, 1,1,1)
+	(7,7,5, 1,1,1)
+	(7,9,5, 1,1,1)
+	(5,5,5, 1,1,1)
+	(5,7,5, 1,1,1)
+	(5,9,5, 1,1,1)
+
+	(8,6,6, 1,1,1)
+	(8,8,6, 1,1,1)
+	(6,6,6, 1,1,1)
+	(6,8,6, 1,1,1)
+	(7,7,7, 1,1,1)
+
+	// white shading on back
+	(11,10,4, 1,1,4, $w)
+	(10,11,4, 1,1,4, $w)
+	(5,12,4, 5,1,4, $w)
+	(4,11,4, 1,1,4, $w)
+	(3,10,4, 1,1,4, $w)
+	(5,11,8, 5,1,1, $w)
+	(4,10,8, 1,1,1, $w)
+	(10,10,8, 1,1,1, $w)
+	(5,10,9, 5,1,1, $w)
+	(6,10,10, 3,1,1, $w)
+	(7,10,11, 1,1,2, $w)
+	(6,10,13, 3,1,1, $w)
+	(5,10,14, 5,1,1, $w)
+	(4,10,15, 1,1,1, $w)
+	(10,10,15, 1,1,1, $w)
+	(5,11,15, 5,1,1, $w)
+	(11,10,16, 1,1,4, $w)
+	(10,11,16, 1,1,4, $w)
+	(5,12,16, 5,1,4, $w)
+	(4,11,16, 1,1,4, $w)
+	(3,10,16, 1,1,4, $w)
+	;
+
+@mixin placeBlock($args) {
+	$defaultArgs: 1 1 1 1 1 1 $bk2;
+	$givenArgs: ();
+
+	@for $a from 1 through length($defaultArgs) {
+		@if $a <= length($args) {
+			$givenArgs: append($givenArgs, nth($args,$a), space);
+		} @else {
+			$givenArgs: append($givenArgs, nth($defaultArgs, $a), space);
+		}
+	}
+
+	$x: nth($givenArgs,1);
+	$y: nth($givenArgs,2);
+	$z: nth($givenArgs,3);
+	$w: nth($givenArgs,4);
+	$d: nth($givenArgs,5);
+	$h: nth($givenArgs,6);
+	$c: nth($givenArgs,7);
+
+	display: inherit;
+	transform: translate3d(
+		$sqSize*($x - 1),
+		$sqSize*(-$y - ($d - 1)),
+		($sqSize*$z) + ($sqSize*($h - 1))
+	);
+	.block-inner div {
+		background-color: $c;
+		&.top, &.bottom {
+			@if $w > 1 {
+				width: $sqSize * $w;
+			}
+			@if $d > 1 {
+				height: $sqSize * $d;
+			}
+		}
+		&.top	{
+			transform: rotateX(-90deg) translateY(-$sqSize*($d - 1)) rotateY(180deg);
+		}
+		&.bottom {
+			transform: rotateX(-90deg) translateY(-$sqSize*($d - 1)) translateZ($sqSize*$h);
+		}
+		&.front, &.back {
+			@if $w > 1 {
+				width: $sqSize * $w;
+			}
+			@if $h > 1 {
+				height: $sqSize * $h;
+			}
+		}
+		&.front {
+			transform: translateZ($sqSize * ($d - 1));
+		}
+		&.left, &.right {
+			@if $d > 1 {
+				width: $sqSize * $d;
+			}
+			@if $h > 1 {
+				height: $sqSize * $h;
+			}
+		}
+		&.right {
+			transform: rotateY(-270deg) translate3d($sqSize, 0, $sqSize*($w - $d));
+		}
+	}
+}
+@mixin moveBlock($x, $y, $z) {
+	transform: translate3d($sqSize * $x,$sqSize * -$y,$sqSize * $z);
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+body, .container {
+	display: flex;
+}
+body {
+	background: $tl;
+	color: $bk1;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font: 20px "Helvetica Neue", Helvetica, sans-serif;
+	height: 100vh;
+	margin: 0;
+}
+h1 {
+	font-size: 2em;
+	text-align: center;
+	span {
+		color: $w;
+		font-weight: 300;
+	}
+}
+.container {
+	margin-bottom: 1.5em;
+	width: $contW;
+	height: $contH;
+	perspective: $prsp;
+	transform-style: preserve-3d;
+	&:not(.running) {
+		cursor: pointer;
+	}
+	&:focus {
+		outline: 1px solid transparent;
+	}
+	&.running {
+		.surface {
+	        animation: flip 1s linear forwards;
+	    }
+		.block:nth-child(n + 53):nth-child(-n + 82) .block-outer {
+			@include moveBlock(0,0,1);
+		}
+	}
+}
+.surface {
+	display: block;
+	width: $sqSize * $xSpaces;
+	height: $sqSize * $ySpaces;
+	margin: auto;
+	transform-style: preserve-3d;
+	transform: rotateX($xAngle) rotateZ($zAngle) translateZ($sqSize * -$zSpaces/2);
+	transition: transform 0.3s linear;
+	will-change: transform;
+}
+.block {
+	display: none;
+	transform-style: preserve-3d;
+	position: absolute;
+	bottom: 0;
+}
+.block-inner > div {
+	width: $sqSize;
+	height: $sqSize;
+}
+.block-inner > div {
+	display: flex;
+	flex-wrap: wrap;
+	align-content: flex-start;
+	position: absolute;
+	&.front, &.back, &.left, &.right {
+		&:before {
+			background-color: #000;
+			content: "";
+			width: 100%;
+			height: 100%;
+		}
+	}
+	&.front, &.back {
+		&:before {
+			opacity: 0.2;
+		}
+	}
+	&.left, &.right {
+		&:before {
+				opacity: 0.4;
+		}
+	}
+}
+.block-outer, .block-inner {
+	position: relative;
+	width: $sqSize;
+	transform-style: preserve-3d;
+}
+.block-outer {
+	transition: transform 0s linear;
+}
+.block-inner {
+	transform: rotateX(-90deg) translateZ($sqSize);
+}
+.back {
+	transform: translateZ(-$sqSize) rotateY(180deg);
+}
+.left {
+	transform-origin: center left;
+	transform: rotateY(270deg) translateX(-$sqSize);
+}
+.right {
+	transform-origin: top right;
+}
+.top, .bottom {
+	transform-origin: top center;
+}
+.top {
+	color: #fff;
+	font-size: 15px;
+}
+.running .block-outer {
+	transition-duration: 0.1s;
+}
+
+// * Render blocks *
+// one block only
+@if length(nth($blocks,1)) == 1 {
+	.b1 {
+		@include placeBlock($blocks);
+	}
+}
+// more than one block
+@else {
+	@for $b from 1 through length($blocks) {
+		.b#{$b} {
+			@include placeBlock(nth($blocks, $b));
+		}
+	}
+}
+
+/* Animations */
+@for $a from 53 through 82 {
+	.running .b#{$a} .block-outer {
+		animation: b#{$a} 1s (1s + (29 - ($a - 53))/4) linear forwards;
+	}
+}
+
+@keyframes flip {
+	from {
+		transform: translateY(0) rotateX($xAngle) rotateZ($zAngle) translateZ($sqSize * -$zSpaces/2);
+	}
+	15% {
+		transform: translateY($sqSize * -4) rotateX($xAngle) rotateZ($zAngle) translateZ($sqSize * -$zSpaces/2);
+	}
+	50% {
+		transform: translateY($sqSize * -4) rotateX($xAngle + 180) rotateZ($zAngle) translateZ($sqSize * -$zSpaces/2);
+	}
+	85% {
+		transform: translateY($sqSize * -4) rotateX($xAngle + 180) rotateZ($zAngle + 180) translateZ($sqSize * -$zSpaces/2);
+	}
+	to {
+		transform: translateY(0) rotateX($xAngle + 180) rotateZ($zAngle + 180) translateZ($sqSize * -$zSpaces/2);
+	}
+}
+@keyframes b53 {
+	from { @include moveBlock(0,0,1) }
+	50% { @include moveBlock(-3,3,6) }
+	to { @include moveBlock(-3,3,12) }
+}
+@keyframes b54 {
+	from { @include moveBlock(0,0,1) }
+	33% { @include moveBlock(-3,1,6) }
+	67% { @include moveBlock(-3,1,9) }
+	to { @include moveBlock(-4,2,13) }
+}
+@keyframes b55 {
+	from { @include moveBlock(0,0,1) }
+	33% { @include moveBlock(-3,-1,6) }
+	67% { @include moveBlock(-3,-1,9) }
+	to { @include moveBlock(-4,-2,13) }
+}
+@keyframes b56 {
+	from { @include moveBlock(0,0,1) }
+	33% { @include moveBlock(-3,-3,6) }
+	67% { @include moveBlock(-3,-3,9) }
+	to { @include moveBlock(-2,-4,13) }
+}
+@keyframes b57 {
+	from { @include moveBlock(0,0,1) }
+	33% { @include moveBlock(-1,3,6) }
+	67% { @include moveBlock(-1,3,9) }
+	to { @include moveBlock(0,4,13) }
+}
+@keyframes b58 {
+	from { @include moveBlock(0,0,1) }
+	33% { @include moveBlock(-1,1,6) }
+	67% { @include moveBlock(-1,1,9) }
+	to { @include moveBlock(-1,1,14) }
+}
+@keyframes b59 {
+	from { @include moveBlock(0,0,1) }
+	33% { @include moveBlock(-1,-1,6) }
+	67% { @include moveBlock(-1,-1,9) }
+	to { @include moveBlock(-1,-3,14) }
+}
+@keyframes b60 {
+	from { @include moveBlock(0,0,1) }
+	33% { @include moveBlock(-1,-3,6) }
+	67% { @include moveBlock(-1,-3,9) }
+	to { @include moveBlock(1,-5,14) }
+}
+@keyframes b61 {
+	from { @include moveBlock(0,0,1) }
+	33% { @include moveBlock(1,3,6) }
+	67% { @include moveBlock(1,3,9) }
+	to { @include moveBlock(3,3,14) }
+}
+@keyframes b62 {
+	from { @include moveBlock(0,0,1) }
+	33% { @include moveBlock(1,1,6) }
+	67% { @include moveBlock(1,1,9) }
+	to { @include moveBlock(3,3,14) }
+}
+@keyframes b63 {
+	from { @include moveBlock(0,0,1) }
+	33% { @include moveBlock(1,-1,6) }
+	67% { @include moveBlock(1,-1,9) }
+	to { @include moveBlock(1,1,14) }
+}
+@keyframes b64 {
+	from { @include moveBlock(0,0,1) }
+	33% { @include moveBlock(1,-3,6) }
+	67% { @include moveBlock(1,-3,9) }
+	to { @include moveBlock(-1,-1,14) }
+}
+@keyframes b65 {
+	from { @include moveBlock(0,0,1) }
+	33% { @include moveBlock(3,3,6) }
+	67% { @include moveBlock(3,3,9) }
+	to { @include moveBlock(1,3,14) }
+}
+@keyframes b66 {
+	from { @include moveBlock(0,0,1) }
+	33% { @include moveBlock(3,1,6) }
+	67% { @include moveBlock(3,1,9) }
+	to { @include moveBlock(1,-1,14) }
+}
+@keyframes b67 {
+	from { @include moveBlock(0,0,1) }
+	33% { @include moveBlock(3,-1,6) }
+	67% { @include moveBlock(3,-1,9) }
+	to { @include moveBlock(0,-4,15) }
+}
+@keyframes b68 {
+	from { @include moveBlock(0,0,1) }
+	33% { @include moveBlock(3,-3,6) }
+	67% { @include moveBlock(3,-3,9) }
+	to { @include moveBlock(2,-6,15) }
+}
+@keyframes b69 {
+	from { @include moveBlock(0,0,1) }
+	33% { @include moveBlock(-2,2,5) }
+	67% { @include moveBlock(-2,2,8) }
+	to { @include moveBlock(-1,-1,14) }
+}
+@keyframes b70 {
+	from { @include moveBlock(0,0,1) }
+	33% { @include moveBlock(-2,0,5) }
+	67% { @include moveBlock(-2,0,8) }
+	to { @include moveBlock(1,-3,14) }
+}
+@keyframes b71 {
+	from { @include moveBlock(0,0,1) }
+	33% { @include moveBlock(-2,-2,5) }
+	67% { @include moveBlock(-2,-2,8) }
+	to { @include moveBlock(1,-3,14) }
+}
+@keyframes b72 {
+	from { @include moveBlock(0,0,1) }
+	33% { @include moveBlock(0,2,5) }
+	67% { @include moveBlock(0,2,8) }
+	to { @include moveBlock(3,3,14) }
+}
+@keyframes b73 {
+	from { @include moveBlock(0,0,1) }
+	50% { @include moveBlock(0,0,8) }
+	to { @include moveBlock(3,3,14) }
+}
+@keyframes b74 {
+	from { @include moveBlock(0,0,1) }
+	33% { @include moveBlock(0,-2,5) }
+	67% { @include moveBlock(0,-2,8) }
+	to { @include moveBlock(1,1,14) }
+}
+@keyframes b75 {
+	from { @include moveBlock(0,0,1) }
+	33% { @include moveBlock(2,2,5) }
+	67% { @include moveBlock(2,2,8) }
+	to { @include moveBlock(1,5,14) }
+}
+@keyframes b76 {
+	from { @include moveBlock(0,0,1) }
+	33% { @include moveBlock(2,0,5) }
+	67% { @include moveBlock(2,0,8) }
+	to { @include moveBlock(-1,3,14) }
+}
+@keyframes b77 {
+	from { @include moveBlock(0,0,1) }
+	33% { @include moveBlock(2,-2,5) }
+	67% { @include moveBlock(2,-2,8) }
+	to { @include moveBlock(-1,-1,14) }
+}
+@keyframes b78 {
+	from { @include moveBlock(0,0,1) }
+	33% { @include moveBlock(-1,1,4) }
+	67% { @include moveBlock(-1,1,7) }
+	to { @include moveBlock(-4,0,13) }
+}
+@keyframes b79 {
+	from { @include moveBlock(0,0,1) }
+	33% { @include moveBlock(-1,-1,4) }
+	67% { @include moveBlock(-1,-1,7) }
+	to { @include moveBlock(-2,-2,13) }
+}
+@keyframes b80 {
+	from { @include moveBlock(0,0,1) }
+	33% { @include moveBlock(1,1,4) }
+	67% { @include moveBlock(1,1,7) }
+	to { @include moveBlock(2,0,13) }
+}
+@keyframes b81 {
+	from { @include moveBlock(0,0,1) }
+	33% { @include moveBlock(1,-1,4) }
+	67% { @include moveBlock(1,-1,7) }
+	to { @include moveBlock(2,0,13) }
+}
+@keyframes b82 {
+	from { @include moveBlock(0,0,1) }
+	50% { @include moveBlock(0,0,6) }
+	to { @include moveBlock(-1,1,12) }
+}
+        </style>
+        <script>
+            window.addEventListener("DOMContentLoaded",function(){
+	var ct = document.querySelector(".container"),
+		t = function(e) {
+			var k = e.keyCode;
+			if (k == 13 || k == 32 || !k) {
+				var c = "running",
+					cl = this.classList;
+				if (!cl.contains(c)) {
+					cl.add(c);
+					setTimeout(function(){
+						cl.remove(c);
+					}, 1e4);
+				}
+			}
+		};
+    ct.addEventListener("click", t);
+    ct.addEventListener("keydown", t);
+});
+        </script>
+    </head>
+- var blocks = 104;
+
+.container(tabindex="0",aria-label="Hourglass. Press Enter or Spacebar to flip.")
+	.surface
+		- for (var b = 1;b <= blocks;++b) {
+			div(class="block b" + b)
+				.block-outer
+					.block-inner
+						.back
+						.bottom
+						.front
+						.left
+						.right
+						.top
+		- }
+h1="405"
+	span="Method Not Allowed"
+{% endblock %}

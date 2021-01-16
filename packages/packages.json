@@ -1,446 +1,1070 @@
 [
-{
-  "name": "Build-Essential",
-  "description": "Build-Essential",
-  "category": "Programming",
-  "icon_url":"/static/images/gcc-48.png",
-  "installers": {"apt": {"pre_install": [], "package_name": "build-essential", "post_install": []}}
-},
-{
-  "name": "Inkscape",
-  "description": "Inkscape",
-  "category": "Graphics",
-  "icon_url":"/static/images/inkscape-48.png",
-  "installers": {"apt": {"pre_install": [], "package_name": "inkscape", "post_install": []}}
-},
-{
-  "name": "GIMP",
-  "description": "GIMP",
-  "category": "Graphics",
-  "icon_url":"/static/images/gimp-48.png",
-  "installers": {"apt": {"pre_install": [], "package_name": "gimp", "post_install": []}}
-},
-{
-  "name": "JDK8",
-  "description": "Installs  AdoptOpenJDK8",
-  "category": "Programming",
-  "icon_url":"/static/images/jdk-48.png",
-  "installers": {"apt": {"pre_install": ["sudo apt-get install -y software-properties-common","wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | sudo apt-key add -","sudo add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/"], "package_name": "adoptopenjdk-8-hotspot", "post_install": [""]}}
-},
-{
-  "name": "JDK11",
-  "description": "Installs AdoptOpenJDK11",
-  "category": "Programming",
-  "icon_url":"/static/images/jdk-48.png",
-  "installers": {"apt": {"pre_install": ["sudo apt-get install -y software-properties-common","wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | sudo apt-key add -","sudo add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/"], "package_name": "adoptopenjdk-11-hotspot", "post_install": [""]}}
-},
-{
-  "name": "Gzip",
-  "description": "Gzip",
-  "category": "Tools",
-  "icon_url":"/static/images/gzip-48.png",
-  "installers": {"apt": {"pre_install": [], "package_name": "gzip", "post_install": []}}
-},
-{
-  "name": "Zip/Unzip",
-  "description": "They are separate apt packages",
-  "category": "Tools",
-  "icon_url":"/static/images/zip-48.png",
-  "installers": {"apt": {"pre_install": [], "package_name": "zip unzip", "post_install": []}}
-},
-{
-  "name": "Spotify",
-  "description": "Music Streaming App",
-  "category": "Media",
-  "icon_url":"/static/images/spotify-48.png",
-  "installers": {"apt": {"pre_install": ["apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 931FF8E79F0876134EDDBDCCA87FF9DF48BF1C90",
-                                         "echo deb http://repository.spotify.com stable non-free | tee /etc/apt/sources.list.d/spotify.list",
-                                         "apt-get update",
-                                         "apt-get install -y spotify-client"
-                                         ],
-                         "package_name": "",
-                         "post_install": []}}
-},
-{
-  "name": "Steam",
-  "description": "Valve Software's game center",
-  "category": "Games",
-  "icon_url":"/static/images/steam-48.png",
-  "installers": {"apt": {"pre_install": ["apt-get -y install curl konsole zenity wget software-properties-common debconf-utils python-apt",
-                                         "dpkg --add-architecture i386",
-                                         "apt-get update",
-                                         "add-apt-repository multiverse",
-                                         "apt purge steam steamcmd || exit 0",
-                                         "echo -e 'steam\tsteam/question\tselect\tI AGREE' | debconf-set-selections",
-                                         "echo -e 'steam\tsteam/license\tnote\t' | debconf-set-selections",
-                                         "echo -e 'steam\tsteam/purge\tnote\t' | debconf-set-selections",
-                                         "wget https://steamcdn-a.akamaihd.net/client/installer/steam.deb",
-                                         "dpkg -i steam.deb"
-                                         ],
-                         "package_name": "",
-                         "post_install": ["rm steam.deb"]}}
-},
-{
-  "name": "SQLite",
-  "description": "SQLite Database",
-  "category": "Databases",
-  "icon_url":"/static/images/sqlite-48.png",
-  "installers": {"apt": {"pre_install": [], "package_name": "sqlite", "post_install": []}}
-},
-{
-  "name": "MongoDB",
-  "description": "MongoDB",
-  "category": "Databases",
-  "icon_url":"/static/images/mongodb-48.png",
-  "installers": {"ubuntu": {"pre_install": ["apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2930ADAE8CAF5059EE73BB4B58712A2291FA4AD5",
-                                            "fnames=`ls /etc/*-release`",
-                                            "for f in $fnames; do source $f; done",
-                                            "echo ==========; echo $DISTRIB_CODENAME; echo ============;",
-                                            "if [ \"$DISTRIB_CODENAME\" = \"bionic\" ]; then DISTRIB='xenial'; else DISTRIB=$DISTRIB_CODENAME; fi" ,
-
-                                            " echo \"deb [ arch=amd64 ] http://repo.mongodb.org/apt/ubuntu ${DISTRIB}/mongodb-org/3.6 multiverse\" | tee /etc/apt/sources.list.d/mongodb-org-3.6.list",
-                                            "apt-get update"],
-                            "package_name": "mongodb-org",
-                            "post_install": []}}
-},
-{
-  "name": "Slack",
-  "description": "Slack",
-  "category": "Productivity",
-  "icon_url":"/static/images/slack-48.png",
-  "installers": {"apt": {"pre_install": [
-                          "apt-get -y install wget",
-                          "apt-get -y install gvfs-bin",
-                          "apt-get -y install apt-transport-https",
-                          "apt-get -y install libxss1",
-                          "apt-get -y install libappindicator1",
-                          "apt-get -y install libcurl3 gconf2",
-                          "apt-get -y install gir1.2-gnomekeyring-1.0",
-                          "wget https://downloads.slack-edge.com/linux_releases/slack-desktop-2.6.2-amd64.deb",
-                          "dpkg -i slack-desktop-2.6.2-amd64.deb",
-                          "rm slack-desktop-2.6.2-amd64.deb"],
-                         "package_name": "",
-                         "post_install": []}}
-
-},
-{
-  "name": "Vagrant",
-  "description": "Vagrant",
-  "category": "Programming",
-  "icon_url":"/static/images/vagrant-48.png",
-  "installers": {"apt": {"pre_install": [
-                          "apt-get -y install wget",
-                          "wget https://releases.hashicorp.com/vagrant/1.9.5/vagrant_1.9.5_x86_64.deb",
-                          "dpkg -i vagrant_1.9.5_x86_64.deb",
-                          "rm vagrant_1.9.5_x86_64.deb"],
-                         "package_name": "",
-                         "post_install": []}}
-
-},
-{
-  "name": "VLC",
-  "description": "VLC Media Player",
-  "category": "Media",
-  "icon_url":"/static/images/vlc-48.png",
-  "installers": {"apt": {"pre_install": [], "package_name": "vlc", "post_install": []}}
-},
-{
-  "name": "PostgreSQL",
-  "description": "PostgreSQL database",
-  "category": "Databases",
-  "icon_url":"/static/images/postgres-48.png",
-  "installers": {"apt": {"pre_install": [], "package_name": "postgresql postgresql-contrib", "post_install": []}}
-},
-{
-  "name": "Git",
-  "description": "Git",
-  "category": "Programming",
-  "icon_url":"/static/images/git-48.png",
-  "installers": {"apt": {"pre_install": [], "package_name": "git", "post_install": []}}
-},
-{
-  "name": "R",
-  "description": "R",
-  "category": "Programming",
-  "icon_url":"/static/images/r-48.png",
-  "installers": {"apt": {"pre_install": ["fnames=`ls /etc/*-release`",
-                                         "for f in $fnames; do source $f; done",
-                                         "apt-get -y install software-properties-common python-apt",
-                                         "apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9",
-                                         "echo ====<>=====",
-                                         "if [ \"$DISTRIB_CODENAME\" = \"bionic\" ]; then DISTRIB='xenial'; else DISTRIB=$DISTRIB_CODENAME; fi" ,
-                                         "if [ \"$DISTRIB_CODENAME\" != \"bionic\" ]; then echo \"deb [arch=amd64,i386] https://cran.rstudio.com/bin/linux/${ID} ${DISTRIB}/\"; fi",
-                                         "echo ====<>=====",
-                                         "if [ \"$DISTRIB_CODENAME\" != \"bionic\" ]; then add-apt-repository \"deb [arch=amd64,i386] https://cran.rstudio.com/bin/linux/${ID} ${DISTRIB}/\"; fi",
-                                         "apt-get update"],
-                         "package_name": "r-base",
-                         "post_install": []}}
-},
-{
-  "name": "Vim",
-  "description": "Vim",
-  "category": "Editors",
-  "icon_url":"/static/images/vim-48.png",
-  "installers": {"apt": {"pre_install": [], "package_name": "vim", "post_install": []}}
-},
-{
-  "name": "Emacs",
-  "description": "Emacs",
-  "category": "Editors",
-  "icon_url":"/static/images/emacs-48.png",
-  "installers": {"apt": {"pre_install": [], "package_name": "emacs", "post_install": []}}
-},
-{
-  "name": "Tmux",
-  "description": "Tmux",
-  "category": "Productivity",
-  "icon_url":"/static/images/tmux-48.png",
-  "installers": {"apt": {"pre_install": [], "package_name": "tmux", "post_install": []}}
-},
-{
-  "name": "Screen",
-  "description": "GNU Screen",
-  "category": "Productivity",
-  "icon_url":"/static/images/gnu-48.png",
-  "installers": {"apt": {"pre_install": [], "package_name": "screen", "post_install": []}}
-},
-{
-  "name": "Conda",
-  "description": "Miniconda installer",
-  "category": "Programming",
-  "icon_url":"/static/images/conda-48.png",
-  "installers": {"apt": {"pre_install": [], "package_name": "tmux", "post_install": []}}
-},
-{
-  "name": "Eclipse",
-  "description": "Eclipse",
-  "category": "Programming",
-  "icon_url":"/static/images/eclipse-48.png",
-  "installers": {"apt": {"pre_install": [], "package_name": "eclipse", "post_install": []}}
-},
-{
-  "name": "Firefox",
-  "description": "Firefox",
-  "category": "Browsers",
-  "icon_url":"/static/images/firefox-48.png",
-  "installers": {"ubuntu": {"pre_install": [], "package_name": "firefox", "post_install": []},
-                 "debian": {"pre_install": ["echo deb http://mozilla.debian.net/ jessie-backports firefox-release >> /etc/apt/sources.list.d/debian-mozilla.list",
-                                            "apt-get install wget",
-                                            "wget mozilla.debian.net/pkg-mozilla-archive-keyring_1.1_all.deb",
-                                            "dpkg -i pkg-mozilla-archive-keyring_1.1_all.deb",
-                                            "apt-get update",
-                                            "apt-get install -t jessie-backports firefox"],
-                            "package_name": "firefox",
-                            "post_install": []}}
-},
-{
-  "name": "Chrome",
-  "description": "Chrome",
-  "category": "Browsers",
-  "icon_url": "https://maxcdn.icons8.com/Color/PNG/48/Logos/chrome-48.png",
-  "installers": {"apt": {"pre_install": ["apt install -y wget fonts-liberation libappindicator3-1",
-                                         "wget https://dl.google.com/linux/linux_signing_key.pub",
-                                         "apt-key add linux_signing_key.pub",
-                                         "apt update",
-                                         "wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb",
-                                         "dpkg -i google-chrome-stable_current_amd64.deb"],
-                         "package_name": "",
-                         "post_install": ["rm linux_signing_key.pub",
-                                          "rm google-chrome-stable_current_amd64.deb"]}}
-},
-{
-  "name": "7zip",
-  "description": "7zip",
-  "category": "Tools",
-  "icon_url": "/static/images/7z-48.png",
-  "installers": {"apt": {"pre_install": [],
-                         "package_name": "p7zip-full", "post_install": []}}
-},
-{
-  "name": "Sublime Text 3",
-  "description": "A versatile text editor for programmers",
-  "category": "Editors",
-  "icon_url":"/static/images/sublime-48.png",
-  "installers": {"apt": {"pre_install": ["wget https://download.sublimetext.com/sublimehq-pub.gpg",
-					 "apt-key add sublimehq-pub.gpg",
-					 "rm sublimehq-pub.gpg",
-                                         "echo 'deb https://download.sublimetext.com/ apt/stable/' >> /etc/apt/sources.list.d/sublime-text.list",
-                                         "apt-get update"
-                                         ],
-                         "package_name": "sublime-text",
-                         "post_install": []}}
-},
-{
-  "name": "Visual Studio Code",
-  "description": "Visual Studio Code is a lightweight but powerful source code editor by Microsoft",
-  "category": "Editors",
-  "icon_url":"/static/images/vscode-48.png",
-  "installers": {"apt": {"pre_install": ["apt-get install curl",
-                     "curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > vscode.gpg",
-					 "apt-key add vscode.gpg",
-					 "rm vscode.gpg",
-                                         "echo 'deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main' > /etc/apt/sources.list.d/vscode.list",
-                                         "apt-get update"
-                                         ],
-                         "package_name": "code",
-                         "post_install": []}}
-},
-{
-  "name": "qBittorrent",
-  "description": "An open-source software alternative to µTorrent",
-  "category": "Tools",
-  "icon_url":"/static/images/qbittorrent-48.png",
-  "installers": {"apt": {"pre_install": ["add-apt-repository ppa:qbittorrent-team/qbittorrent-stable",
-                                         "apt-get update"
-                                         ],
-                         "package_name": "qbittorrent",
-                         "post_install": []}}
-},
-{
-  "name": "Android Studio",
-  "description": "The Official IDE for Android",
-  "category": "Programming",
-  "icon_url":"/static/images/android-studio-48.png",
-  "installers": {"apt": {"pre_install": ["add-apt-repository ppa:maarten-fonville/android-studio",
-                                         "apt-get update"
-                                         ],
-                         "package_name": "android-studio",
-                         "post_install": []}}
-},
-{
-  "name": "GitKraken",
-  "description": "A polished Git GUI for Windows, Mac and Linux",
-  "category": "Productivity",
-  "icon_url":"/static/images/gitkraken-48.png",
-  "installers": {"apt": {"pre_install": ["apt install -y wget",
-                                         "wget https://release.gitkraken.com/linux/gitkraken-amd64.deb",
-                                         "dpkg -i gitkraken-amd64.deb",
-                                         "apt-get update"],
-                            "package_name": "",
-                            "post_install": ["rm gitkraken-amd64.deb"]}}
-},
-{
-  "name": "Mailspring",
-  "description": "An email client for Windows, Mac and Linux",
-  "category": "Productivity",
-  "icon_url":"/static/images/mailspring-48.png",
-  "installers": {"apt": {"pre_install": ["apt install -y wget libsecret-1-dev",
-                                         "wget https://updates.getmailspring.com/download?platform=linuxDeb -O 'mailspring.deb'",
-                                         "dpkg -i mailspring.deb",
-                                         "apt-get update"],
-                            "package_name": "",
-                            "post_install": ["rm mailspring.deb"]}}
-},
-{
-  "name": "Atom",
-  "description": "A hackable text editor for the 21st Century",
-  "category": "Editors",
-  "icon_url":"/static/images/atom-48.png",
-  "installers": {"apt": {"pre_install": ["apt install -y wget git",
-                                         "wget https://atom.io/download/deb -O 'atom.deb'",
-                                         "dpkg -i atom.deb",
-                                         "apt-get update"],
-                            "package_name": "",
-                            "post_install": ["rm atom.deb"]}}
-},
-{
-  "name": "Zsh",
-  "description": "An interactive, powerful and scriptable shell",
-  "category": "Productivity",
-  "icon_url":"/static/images/zsh-48.png",
-  "installers": {"apt": {"pre_install": [""],
-                           "package_name": "zsh zsh-common",
-                           "post_install": []}}
-},
-{
-  "name": "Oh My Zsh",
-  "description": "Oh My Zsh is an open source, community-driven framework for managing your zsh configuration",
-  "category": "Productivity",
-  "icon_url":"/static/images/ohmyzsh-48.png",
-  "installers": {"apt": {"pre_install": ["apt-get install -y git zsh zsh-common",
-    "git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh",
-    "[ -f ~/.zshrc ] && cp ~/.zshrc ~/.zshrc.orig",
-    "cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc",
-    "[ -z ${TERM+x} ] && chsh -s /bin/zsh || echo 'Not a login shell. Make sure to run chsh later.'"],
-                           "package_name": "",
-                           "post_install": []}}
-},
-{
-  "name": "Node Version Manager (NVM)",
-  "description": "Simple bash script to manage multiple active node.js versions",
-  "category": "Programming",
-  "icon_url":"/static/images/nvm-48.png",
-  "installers": {"apt": {"pre_install": ["apt-get purge -y nodejs",
-    "git clone https://github.com/creationix/nvm.git $HOME/.nvm",
-    "LATEST_NVM_VERSION=`curl -s 'https://api.github.com/repos/creationix/nvm/releases/latest' | grep -P -o '(?<=v)[\\d.][\\d.]*' | head -1`",
-    "cd $HOME/.nvm",
-    "chmod +x nvm.sh",
-    "./nvm.sh",
-    "echo -e \"\n# NVM Config\" >> $HOME/.bashrc",
-    "echo \"export NVM_DIR=\"$HOME/.nvm\"\" >> $HOME/.bashrc",
-    "echo \"[ -s \"$NVM_DIR/nvm.sh\" ] && \\. \"$NVM_DIR/nvm.sh\"  # This loads nvm\" >> $HOME/.bashrc",
-    "echo \"[ -s \"$NVM_DIR/bash_completion\" ] && \\. \"$NVM_DIR/bash_completion\"  # This loads nvm bash_completion\" >> $HOME/.bashrc"
-  ],
-                           "package_name": "",
-                           "post_install": ["cd $HOME"]}}
-},
-{
-  "name": "rbenv & Ruby Build",
-  "description": "Simple Ruby version management",
-  "category": "Programming",
-  "icon_url":"/static/images/rbenv-48.png",
-  "installers": {"apt": {"pre_install": ["apt-get install -y git",
-    "echo \"Installing rbenv\"",
-    "git clone https://github.com/rbenv/rbenv.git ~/.rbenv",
-    "echo 'export PATH=\"$HOME/.rbenv/bin:$PATH\"' >> ~/.bashrc",
-    "echo 'eval \"$(rbenv init -)\"' >> ~/.bashrc",
-    "echo",
-    "echo \"Installing ruby build\"",
-    "git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build",
-    "echo 'export PATH=\"$HOME/.rbenv/plugins/ruby-build/bin:$PATH\"' >> ~/.bashrc",
-    "echo 'Done! Run rbenv install <RUBY_VERSION> && rbenv global <RUBY_VERSION> to install ruby.'"
-  ],
-                           "package_name": "",
-                           "post_install": ["chown -R $USER:$USER $HOME/.rbenv"]}}
-},
-{
-  "name": "Go",
-  "description": "Go is an open source programming language that makes it easy to build simple, reliable, and efficient software.",
-  "category": "Programming",
-  "icon_url":"/static/images/go-48.png",
-  "installers": {"apt": {"pre_install": ["add-apt-repository ppa:gophers/archive",
-    "apt update"
-  ],
-                           "package_name": "golang-1.9-go",
-                           "post_install": ["echo \"export PATH=$PATH:/usr/lib/go-1.9/bin\" >> ~/.bashrc",
-                            ". ~/.bashrc"]}}
-},
-{
-  "name":"Flatpak",
-  "description": "Flatpak is a tool for managing applications and the runtimes they use. In the Flatpak model, applications can be built and distributed independently from the host system they are used on, and they are isolated from the host system ('sandboxed') to some degree, at runtime.",
-  "category": "Tools",
-  "icon_url":"/static/images/Flatpak_logo.png",
-  "installers": {"apt": {"pre_install": [],
-                           "package_name": "flatpak",
-                           "post_install": ["flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo"]}}
-},
-{
-  "name":"OBS",
-  "description": "Open Broadcaster Software, Free and open source software for video recording and live streaming.",
-  "category": "Games",
-  "icon_url":"/static/images/obs.png",
-  "installers": {"apt": {"pre_install": ["add-apt-repository ppa:obsproject/obs-studio",
-    "sudo apt update"],
-                           "package_name": "obs-studio",
-                           "post_install": []}}
-},
-{
-"name": "Bitwarden (flatpack)",
-"description": "Opensource Password Manager. This will install the flatpak version from flathub",
-"category": "Tools",
-"icon_url":"/static/images/bitwarden.png",
-"installers": {"apt": {"pre_install": ["flatpak install flathub com.bitwarden.desktop"],
-                       "package_name": "",
-                       "post_install": []}}
-}
+    {
+        "name": "Build-Essential",
+        "description": "Build-Essential",
+        "category": "Programming",
+        "icon_url": "/static/images/gcc-48.png",
+        "installers": {
+            "apt": {
+                "pre_install": [],
+                "package_name": "build-essential",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "Inkscape",
+        "description": "Inkscape",
+        "category": "Graphics",
+        "icon_url": "/static/images/inkscape-48.png",
+        "installers": {
+            "apt": {
+                "pre_install": [],
+                "package_name": "inkscape",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "GIMP",
+        "description": "GIMP",
+        "category": "Graphics",
+        "icon_url": "/static/images/gimp-48.png",
+        "installers": {
+            "apt": {
+                "pre_install": [],
+                "package_name": "gimp",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "JDK8",
+        "description": "Installs  AdoptOpenJDK8",
+        "category": "Programming",
+        "icon_url": "/static/images/jdk-48.png",
+        "installers": {
+            "apt": {
+                "pre_install": [
+                    "sudo apt-get install -y software-properties-common",
+                    "wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | sudo apt-key add -",
+                    "sudo add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/"
+                ],
+                "package_name": "adoptopenjdk-8-hotspot",
+                "post_install": [
+                    ""
+                ]
+            }
+        }
+    },
+    {
+        "name": "JDK11",
+        "description": "Installs AdoptOpenJDK11",
+        "category": "Programming",
+        "icon_url": "/static/images/jdk-48.png",
+        "installers": {
+            "apt": {
+                "pre_install": [
+                    "sudo apt-get install -y software-properties-common",
+                    "wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | sudo apt-key add -",
+                    "sudo add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/"
+                ],
+                "package_name": "adoptopenjdk-11-hotspot",
+                "post_install": [
+                    ""
+                ]
+            }
+        }
+    },
+    {
+        "name": "Gzip",
+        "description": "Gzip",
+        "category": "Tools",
+        "icon_url": "/static/images/gzip-48.png",
+        "installers": {
+            "apt": {
+                "pre_install": [],
+                "package_name": "gzip",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "Zip/Unzip",
+        "description": "They are separate apt packages",
+        "category": "Tools",
+        "icon_url": "/static/images/zip-48.png",
+        "installers": {
+            "apt": {
+                "pre_install": [],
+                "package_name": "zip unzip",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "Spotify (flatpak)",
+        "description": "Music Streaming App.  This will install the flatpak version",
+        "category": "Media",
+        "icon_url": "/static/images/spotify-48.png",
+        "installers": {
+            "apt": {
+                "pre_install": [
+                    "flatpak install flathub com.spotify.Client -y"
+                ],
+                "package_name": "",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "Steam",
+        "description": "Valve Software's game center",
+        "category": "Games",
+        "icon_url": "/static/images/steam-48.png",
+        "installers": {
+            "apt": {
+                "pre_install": [
+                    "apt-get -y install curl konsole zenity wget software-properties-common debconf-utils python-apt",
+                    "dpkg --add-architecture i386",
+                    "apt-get update",
+                    "add-apt-repository multiverse -y",
+                    "apt purge steam steamcmd || exit 0",
+                    "echo -e 'steam\tsteam/question\tselect\tI AGREE' | debconf-set-selections",
+                    "echo -e 'steam\tsteam/license\tnote\t' | debconf-set-selections",
+                    "echo -e 'steam\tsteam/purge\tnote\t' | debconf-set-selections",
+                    "wget https://steamcdn-a.akamaihd.net/client/installer/steam.deb",
+                    "dpkg -i steam.deb"
+                ],
+                "package_name": "",
+                "post_install": [
+                    "rm steam.deb"
+                ]
+            }
+        }
+    },
+    {
+        "name": "SQLite",
+        "description": "SQLite Database",
+        "category": "Databases",
+        "icon_url": "/static/images/sqlite-48.png",
+        "installers": {
+            "apt": {
+                "pre_install": [],
+                "package_name": "sqlite",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "MongoDB",
+        "description": "MongoDB",
+        "category": "Databases",
+        "icon_url": "/static/images/mongodb-48.png",
+        "installers": {
+            "ubuntu": {
+                "pre_install": [
+                    "apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2930ADAE8CAF5059EE73BB4B58712A2291FA4AD5",
+                    "fnames=`ls /etc/*-release`",
+                    "for f in $fnames; do source $f; done",
+                    "echo ==========; echo $DISTRIB_CODENAME; echo ============;",
+                    "if [ \"$DISTRIB_CODENAME\" = \"bionic\" ]; then DISTRIB='xenial'; else DISTRIB=$DISTRIB_CODENAME; fi",
+                    " echo \"deb [ arch=amd64 ] http://repo.mongodb.org/apt/ubuntu ${DISTRIB}/mongodb-org/3.6 multiverse\" | tee /etc/apt/sources.list.d/mongodb-org-3.6.list",
+                    "apt-get update"
+                ],
+                "package_name": "mongodb-org",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "Slack (Flatpak)",
+        "description": "Slack, requires flatpak to be installed",
+        "category": "Productivity",
+        "icon_url": "/static/images/slack-48.png",
+        "installers": {
+            "apt": {
+                "pre_install": [
+                    "flatpak install flathub com.slack.Slack -y"
+                ],
+                "package_name": "",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "Vagrant",
+        "description": "Vagrant",
+        "category": "Programming",
+        "icon_url": "/static/images/vagrant-48.png",
+        "installers": {
+            "apt": {
+                "pre_install": [
+                    "apt-get -y install wget",
+                    "wget https://releases.hashicorp.com/vagrant/1.9.5/vagrant_1.9.5_x86_64.deb",
+                    "dpkg -i vagrant_1.9.5_x86_64.deb",
+                    "rm vagrant_1.9.5_x86_64.deb"
+                ],
+                "package_name": "",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "VLC",
+        "description": "VLC Media Player",
+        "category": "Media",
+        "icon_url": "/static/images/vlc-48.png",
+        "installers": {
+            "apt": {
+                "pre_install": [],
+                "package_name": "vlc",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "PostgreSQL",
+        "description": "PostgreSQL database",
+        "category": "Databases",
+        "icon_url": "/static/images/postgres-48.png",
+        "installers": {
+            "apt": {
+                "pre_install": [],
+                "package_name": "postgresql postgresql-contrib",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "Git",
+        "description": "Git",
+        "category": "Programming",
+        "icon_url": "/static/images/git-48.png",
+        "installers": {
+            "apt": {
+                "pre_install": [],
+                "package_name": "git",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "R",
+        "description": "R",
+        "category": "Programming",
+        "icon_url": "/static/images/r-48.png",
+        "installers": {
+            "apt": {
+                "pre_install": [
+                    "fnames=`ls /etc/*-release`",
+                    "for f in $fnames; do source $f; done",
+                    "apt-get -y install software-properties-common python-apt",
+                    "apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9",
+                    "echo ====<>=====",
+                    "if [ \"$DISTRIB_CODENAME\" = \"bionic\" ]; then DISTRIB='xenial'; else DISTRIB=$DISTRIB_CODENAME; fi",
+                    "if [ \"$DISTRIB_CODENAME\" != \"bionic\" ]; then echo \"deb [arch=amd64,i386] https://cran.rstudio.com/bin/linux/${ID} ${DISTRIB}/\"; fi",
+                    "echo ====<>=====",
+                    "if [ \"$DISTRIB_CODENAME\" != \"bionic\" ]; then add-apt-repository \"deb [arch=amd64,i386] https://cran.rstudio.com/bin/linux/${ID} ${DISTRIB}/\"; fi",
+                    "apt-get update"
+                ],
+                "package_name": "r-base",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "Vim",
+        "description": "Vim",
+        "category": "Editors",
+        "icon_url": "/static/images/vim-48.png",
+        "installers": {
+            "apt": {
+                "pre_install": [],
+                "package_name": "vim",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "Emacs",
+        "description": "Emacs",
+        "category": "Editors",
+        "icon_url": "/static/images/emacs-48.png",
+        "installers": {
+            "apt": {
+                "pre_install": [],
+                "package_name": "emacs",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "Tmux",
+        "description": "Tmux",
+        "category": "Productivity",
+        "icon_url": "/static/images/tmux-48.png",
+        "installers": {
+            "apt": {
+                "pre_install": [],
+                "package_name": "tmux",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "Screen",
+        "description": "GNU Screen",
+        "category": "Productivity",
+        "icon_url": "/static/images/gnu-48.png",
+        "installers": {
+            "apt": {
+                "pre_install": [],
+                "package_name": "screen",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "Conda",
+        "description": "Miniconda installer",
+        "category": "Programming",
+        "icon_url": "/static/images/conda-48.png",
+        "installers": {
+            "apt": {
+                "pre_install": [],
+                "package_name": "tmux",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "Eclipse",
+        "description": "Eclipse",
+        "category": "Programming",
+        "icon_url": "/static/images/eclipse-48.png",
+        "installers": {
+            "apt": {
+                "pre_install": [],
+                "package_name": "eclipse",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "Firefox",
+        "description": "Firefox",
+        "category": "Browsers",
+        "icon_url": "/static/images/firefox-48.png",
+        "installers": {
+            "ubuntu": {
+                "pre_install": [],
+                "package_name": "firefox",
+                "post_install": []
+            },
+            "debian": {
+                "pre_install": [
+                    "echo deb http://mozilla.debian.net/ jessie-backports firefox-release >> /etc/apt/sources.list.d/debian-mozilla.list",
+                    "apt-get install wget",
+                    "wget mozilla.debian.net/pkg-mozilla-archive-keyring_1.1_all.deb",
+                    "dpkg -i pkg-mozilla-archive-keyring_1.1_all.deb",
+                    "apt-get update",
+                    "apt-get install -t jessie-backports firefox"
+                ],
+                "package_name": "firefox",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "Chrome",
+        "description": "Chrome",
+        "category": "Browsers",
+        "icon_url": "https://maxcdn.icons8.com/Color/PNG/48/Logos/chrome-48.png",
+        "installers": {
+            "apt": {
+                "pre_install": [
+                    "apt install -y wget fonts-liberation libappindicator3-1",
+                    "wget https://dl.google.com/linux/linux_signing_key.pub",
+                    "apt-key add linux_signing_key.pub",
+                    "apt update",
+                    "wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb",
+                    "dpkg -i google-chrome-stable_current_amd64.deb"
+                ],
+                "package_name": "",
+                "post_install": [
+                    "rm linux_signing_key.pub",
+                    "rm google-chrome-stable_current_amd64.deb"
+                ]
+            }
+        }
+    },
+    {
+        "name": "7zip",
+        "description": "7zip",
+        "category": "Tools",
+        "icon_url": "/static/images/7z-48.png",
+        "installers": {
+            "apt": {
+                "pre_install": [],
+                "package_name": "p7zip-full",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "Sublime Text 3",
+        "description": "A versatile text editor for programmers",
+        "category": "Editors",
+        "icon_url": "/static/images/sublime-48.png",
+        "installers": {
+            "apt": {
+                "pre_install": [
+                    "wget https://download.sublimetext.com/sublimehq-pub.gpg",
+                    "apt-key add sublimehq-pub.gpg",
+                    "rm sublimehq-pub.gpg",
+                    "echo 'deb https://download.sublimetext.com/ apt/stable/' >> /etc/apt/sources.list.d/sublime-text.list",
+                    "apt-get update"
+                ],
+                "package_name": "sublime-text",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "Visual Studio Code",
+        "description": "Visual Studio Code is a lightweight but powerful source code editor by Microsoft",
+        "category": "Editors",
+        "icon_url": "/static/images/vscode-48.png",
+        "installers": {
+            "apt": {
+                "pre_install": [
+                    "apt-get install curl",
+                    "curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > vscode.gpg",
+                    "apt-key add vscode.gpg",
+                    "rm vscode.gpg",
+                    "echo 'deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main' > /etc/apt/sources.list.d/vscode.list",
+                    "apt-get update"
+                ],
+                "package_name": "code",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "qBittorrent",
+        "description": "An open-source software alternative to µTorrent",
+        "category": "Tools",
+        "icon_url": "/static/images/qbittorrent-48.png",
+        "installers": {
+            "apt": {
+                "pre_install": [
+                    "add-apt-repository ppa:qbittorrent-team/qbittorrent-stable",
+                    "apt-get update"
+                ],
+                "package_name": "qbittorrent",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "Android Studio",
+        "description": "The Official IDE for Android",
+        "category": "Programming",
+        "icon_url": "/static/images/android-studio-48.png",
+        "installers": {
+            "apt": {
+                "pre_install": [
+                    "add-apt-repository ppa:maarten-fonville/android-studio",
+                    "apt-get update"
+                ],
+                "package_name": "android-studio",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "GitKraken",
+        "description": "A polished Git GUI for Windows, Mac and Linux",
+        "category": "Productivity",
+        "icon_url": "/static/images/gitkraken-48.png",
+        "installers": {
+            "apt": {
+                "pre_install": [
+                    "apt install -y wget",
+                    "wget https://release.gitkraken.com/linux/gitkraken-amd64.deb",
+                    "dpkg -i gitkraken-amd64.deb",
+                    "apt-get update"
+                ],
+                "package_name": "",
+                "post_install": [
+                    "rm gitkraken-amd64.deb"
+                ]
+            }
+        }
+    },
+    {
+        "name": "Mailspring",
+        "description": "An email client for Windows, Mac and Linux",
+        "category": "Productivity",
+        "icon_url": "/static/images/mailspring-48.png",
+        "installers": {
+            "apt": {
+                "pre_install": [
+                    "apt install -y wget libsecret-1-dev",
+                    "wget https://updates.getmailspring.com/download?platform=linuxDeb -O 'mailspring.deb'",
+                    "dpkg -i mailspring.deb",
+                    "apt-get update"
+                ],
+                "package_name": "",
+                "post_install": [
+                    "rm mailspring.deb"
+                ]
+            }
+        }
+    },
+    {
+        "name": "Atom",
+        "description": "A hackable text editor for the 21st Century",
+        "category": "Editors",
+        "icon_url": "/static/images/atom-48.png",
+        "installers": {
+            "apt": {
+                "pre_install": [
+                    "apt install -y wget git",
+                    "wget https://atom.io/download/deb -O 'atom.deb'",
+                    "dpkg -i atom.deb",
+                    "apt-get update"
+                ],
+                "package_name": "",
+                "post_install": [
+                    "rm atom.deb"
+                ]
+            }
+        }
+    },
+    {
+        "name": "Zsh",
+        "description": "An interactive, powerful and scriptable shell",
+        "category": "Productivity",
+        "icon_url": "/static/images/zsh-48.png",
+        "installers": {
+            "apt": {
+                "pre_install": [
+                    ""
+                ],
+                "package_name": "zsh zsh-common",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "Oh My Zsh",
+        "description": "Oh My Zsh is an open source, community-driven framework for managing your zsh configuration",
+        "category": "Productivity",
+        "icon_url": "/static/images/ohmyzsh-48.png",
+        "installers": {
+            "apt": {
+                "pre_install": [
+                    "apt-get install -y git zsh zsh-common",
+                    "git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh",
+                    "[ -f ~/.zshrc ] && cp ~/.zshrc ~/.zshrc.orig",
+                    "cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc",
+                    "[ -z ${TERM+x} ] && chsh -s /bin/zsh || echo 'Not a login shell. Make sure to run chsh later.'"
+                ],
+                "package_name": "",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "Node Version Manager (NVM)",
+        "description": "Simple bash script to manage multiple active node.js versions",
+        "category": "Programming",
+        "icon_url": "/static/images/nvm-48.png",
+        "installers": {
+            "apt": {
+                "pre_install": [
+                    "apt-get purge -y nodejs",
+                    "git clone https://github.com/creationix/nvm.git $HOME/.nvm",
+                    "LATEST_NVM_VERSION=`curl -s 'https://api.github.com/repos/creationix/nvm/releases/latest' | grep -P -o '(?<=v)[\\d.][\\d.]*' | head -1`",
+                    "cd $HOME/.nvm",
+                    "chmod +x nvm.sh",
+                    "./nvm.sh",
+                    "echo -e \"\n# NVM Config\" >> $HOME/.bashrc",
+                    "echo \"export NVM_DIR=\"$HOME/.nvm\"\" >> $HOME/.bashrc",
+                    "echo \"[ -s \"$NVM_DIR/nvm.sh\" ] && \\. \"$NVM_DIR/nvm.sh\"  # This loads nvm\" >> $HOME/.bashrc",
+                    "echo \"[ -s \"$NVM_DIR/bash_completion\" ] && \\. \"$NVM_DIR/bash_completion\"  # This loads nvm bash_completion\" >> $HOME/.bashrc"
+                ],
+                "package_name": "",
+                "post_install": [
+                    "cd $HOME"
+                ]
+            }
+        }
+    },
+    {
+        "name": "rbenv & Ruby Build",
+        "description": "Simple Ruby version management",
+        "category": "Programming",
+        "icon_url": "/static/images/rbenv-48.png",
+        "installers": {
+            "apt": {
+                "pre_install": [
+                    "apt-get install -y git",
+                    "echo \"Installing rbenv\"",
+                    "git clone https://github.com/rbenv/rbenv.git ~/.rbenv",
+                    "echo 'export PATH=\"$HOME/.rbenv/bin:$PATH\"' >> ~/.bashrc",
+                    "echo 'eval \"$(rbenv init -)\"' >> ~/.bashrc",
+                    "echo",
+                    "echo \"Installing ruby build\"",
+                    "git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build",
+                    "echo 'export PATH=\"$HOME/.rbenv/plugins/ruby-build/bin:$PATH\"' >> ~/.bashrc",
+                    "echo 'Done! Run rbenv install <RUBY_VERSION> && rbenv global <RUBY_VERSION> to install ruby.'"
+                ],
+                "package_name": "",
+                "post_install": [
+                    "chown -R $USER:$USER $HOME/.rbenv"
+                ]
+            }
+        }
+    },
+    {
+        "name": "Go",
+        "description": "Go is an open source programming language that makes it easy to build simple, reliable, and efficient software.",
+        "category": "Programming",
+        "icon_url": "/static/images/go-48.png",
+        "installers": {
+            "apt": {
+                "pre_install": [
+                    "add-apt-repository ppa:longsleep/golang-backports",
+                    "apt update"
+                ],
+                "package_name": "golang-go",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "Flatpak",
+        "description": "Flatpak is a tool for managing applications and the runtimes they use. In the Flatpak model, applications can be built and distributed independently from the host system they are used on, and they are isolated from the host system ('sandboxed') to some degree, at runtime.",
+        "category": "Tools",
+        "icon_url": "/static/images/Flatpak_logo.png",
+        "installers": {
+            "apt": {
+                "pre_install": [],
+                "package_name": "flatpak",
+                "post_install": [
+                    "flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo"
+                ]
+            }
+        }
+    },
+    {
+        "name": "OBS",
+        "description": "Open Broadcaster Software, Free and open source software for video recording and live streaming.",
+        "category": "Games",
+        "icon_url": "/static/images/obs.png",
+        "installers": {
+            "apt": {
+                "pre_install": [
+                    "add-apt-repository ppa:obsproject/obs-studio",
+                    "sudo apt update"
+                ],
+                "package_name": "obs-studio",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "Bitwarden (flatpack)",
+        "description": "Opensource Password Manager. This will install the flatpak version from flathub",
+        "category": "Tools",
+        "icon_url": "/static/images/bitwarden.png",
+        "installers": {
+            "apt": {
+                "pre_install": [
+                    "flatpak install flathub com.bitwarden.desktop -y"
+                ],
+                "package_name": "",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "Darktable (flatpack)",
+        "description": "A free and open-source photography application software and raw developer. This will install the flatpak version from flathub",
+        "category": "Graphics",
+        "icon_url": "/static/images/darktable.png",
+        "installers": {
+            "apt": {
+                "pre_install": [
+                    "flatpak install flathub org.darktable.Darktable -y"
+                ],
+                "package_name": "",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "ProtonMail Bridge (flatpack)",
+        "description": "ProtonMail Bridge is an application available to all paid users that enables the integration of your ProtonMail account with popular email clients, such as Microsoft Outlook, Mozilla Thunderbird, or Apple Mail. Bridge runs in the background by seamlessly encrypting and decrypting messages as they enter and leave your computer. The app is compatible with most email clients supporting IMAP and SMTP protocols.  This will install the flatpak version from flathub",
+        "category": "Productivity",
+        "icon_url": "/static/images/protonmail-sign-dark.png",
+        "installers": {
+            "apt": {
+                "pre_install": [
+                    "flatpak install flathub org.darktable.Darktable -y"
+                ],
+                "package_name": "",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "Discord (flatpak)",
+        "description": "All-in-one voice and text chat for gamers that's free, secure, and works on both your desktop and phone. This will install the flatpak version from flathub",
+        "category": "Productivity",
+        "icon_url": "/static/images/discord-48.png",
+        "installers": {
+            "apt": {
+                "pre_install": [
+                    "flatpak install flathub com.discordapp.Discord -y"
+                ],
+                "package_name": "",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "Pulse Effects   (flatpak)",
+        "description": "Audio Effects for PulseAudio Applications. This will install the flatpak version from flathub",
+        "category": "Tools",
+        "icon_url": "/static/images/pulseeffects.png",
+        "installers": {
+            "apt": {
+                "pre_install": [
+                    "flatpak install flathub com.discordapp.Discord -y"
+                ],
+                "package_name": "",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "Gnome Podcasts (flatpak)",
+        "description": "Podcast app for GNOME.  This will install the flatpak version",
+        "category": "Media",
+        "icon_url": "/static/images/gnome_podcasts.png",
+        "installers": {
+            "apt": {
+                "pre_install": [
+                    "flatpak install flathub org.gnome.Podcasts -y"
+                ],
+                "package_name": "",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "Flameshot (flatpak)",
+        "description": "Powerful and simple to use screenshot software.  This will install the flatpak version",
+        "category": "Graphics",
+        "icon_url": "/static/images/flameshot-icon.png",
+        "installers": {
+            "apt": {
+                "pre_install": [
+                    "flatpak install flathub org.flameshot.Flameshot -y"
+                ],
+                "package_name": "",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "Vivaldi",
+        "description": "Vivaldi",
+        "category": "Browsers",
+        "icon_url": "/static/images/Vivaldi.png",
+        "installers": {
+            "apt": {
+                "pre_install": [
+                    "wget -qO- https://repo.vivaldi.com/archive/linux_signing_key.pub | sudo apt-key add -",
+                    "add-apt-repository 'deb https://repo.vivaldi.com/archive/deb/ stable main' -y",
+                    "apt update",
+                    "apt-get install -y vivaldi-stable"
+                ],
+                "package_name": "",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "Solaar",
+        "description": "A Linux manager for many Logitech keyboards, mice, and trackpads that connect wirelessly to a USB Unifying, Lightspeed, or Nano receiver, connect directly via a USB cable, or connect via Bluetooth",
+        "category": "Tools",
+        "icon_url": "/static/images/solaar.png",
+        "installers": {
+            "apt": {
+                "pre_install": [],
+                "package_name": "solaar",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "Sublime Merge",
+        "description": "A Git Client, done Sublime",
+        "category": "Editors",
+        "icon_url": "/static/images/sublime_merge-48.png",
+        "installers": {
+            "apt": {
+                "pre_install": [
+                    "wget https://download.sublimetext.com/sublimehq-pub.gpg",
+                    "apt-key add sublimehq-pub.gpg",
+                    "rm sublimehq-pub.gpg",
+                    "echo 'deb https://download.sublimetext.com/ apt/stable/' >> /etc/apt/sources.list.d/sublime-text.list",
+                    "apt-get update"
+                ],
+                "package_name": "sublime-merge",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "Gnome Tweaks",
+        "description": "Gnome Tweaks",
+        "category": "Tools",
+        "icon_url": "/static/images/gnome-tweak-tool-icon.png",
+        "installers": {
+            "apt": {
+                "pre_install": [],
+                "package_name": "gnome-tweaks",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "HTOP",
+        "description": "This is htop, a cross-platform interactive process viewer. It is a text-mode application (for console or X terminals) and requires ncurses.",
+        "category": "Tools",
+        "icon_url": "/static/images/htop.png",
+        "installers": {
+            "apt": {
+                "pre_install": [],
+                "package_name": "htop",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "Bashtop",
+        "description": "Resource monitor that shows usage and stats for processor, memory, disks, network and processes.",
+        "category": "Tools",
+        "icon_url": "/static/images/htop.png",
+        "installers": {
+            "apt": {
+                "pre_install": [
+                    "add-apt-repository -y ppa:bashtop-monitor/bashtop",
+                    "apt update",
+                    "apt-get install -y bashtop"
+                ],
+                "package_name": "",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "Netdata",
+        "description": "Real-time performance monitoring, done right!",
+        "category": "Tools",
+        "icon_url": "/static/images/netdata.png",
+        "installers": {
+            "apt": {
+                "pre_install": [
+                    "bash <(curl -Ss https://my-netdata.io/kickstart.sh)"
+                ],
+                "package_name": "",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "Handbrake",
+        "description": "HandBrake is a tool for converting video from nearly any format to a selection of modern, widely supported codecs.",
+        "category": "Media",
+        "icon_url": "/static/images/HandBrake.png",
+        "installers": {
+            "apt": {
+                "pre_install": [
+                    "add-apt-repository ppa:stebbins/handbrake-releases -y",
+                    "sudo apt-get update",
+                    "apt install --install-recommends handbrake-gtk"
+                ],
+                "package_name": "clipgrab",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "Quickdocs (flatpak)",
+        "description": "Powerful and simple to use screenshot software.  This will install the flatpak version",
+        "category": "Programming",
+        "icon_url": "/static/images/quickdocs.png",
+        "installers": {
+            "apt": {
+                "pre_install": [
+                    "flatpak install flathub com.github.mdh34.quickdocs -y"
+                ],
+                "package_name": "",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "Mainline",
+        "description": "This is a tool for installing the latest mainline Linux kernel on Ubuntu-based distributions",
+        "category": "Tools",
+        "icon_url": "/static/images/Tux.png",
+        "installers": {
+            "apt": {
+                "pre_install": [
+                    "add-apt-repository ppa:cappelikan/ppa -y",
+                    "sudo apt-get update",
+                    "apt install -y mainline"
+                ],
+                "package_name": "",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "Postman (flatpak)",
+        "description": "Postman is a complete API development environment.  This will install the flatpak version",
+        "category": "Programming",
+        "icon_url": "/static/images/Postman.png",
+        "installers": {
+            "apt": {
+                "pre_install": [
+                    "flatpak install flathub com.getpostman.Postman -y"
+                ],
+                "package_name": "",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "Lutris And Wine",
+        "description": "This will install Lutris and will install Wine at the same time",
+        "category": "Games",
+        "icon_url": "/static/images/Lutrus.png",
+        "installers": {
+            "apt": {
+                "pre_install": [
+                    "sudo dpkg --add-architecture i386",
+                    "wget -nc https://dl.winehq.org/wine-builds/winehq.key",
+                    "sudo apt-key add winehq.key",
+                    "sudo apt-add-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ focal main' -y",
+                    "sudo apt update",
+                    "sudo apt install --install-recommends -y winehq-stable",
+                    "sudo add-apt-repository ppa:lutris-team/lutris -y",
+                    "sudo apt update"
+                ],
+                "package_name": "lutris",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "IntelliJ Idea CE (flatpak)",
+        "description": "Capable and Ergonomic Java IDE from JetBrains.  This will install the flatpak version",
+        "category": "Programming",
+        "icon_url": "/static/images/IntelliJ-IDEA.png",
+        "installers": {
+            "apt": {
+                "pre_install": [
+                    "flatpak install flathub com.jetbrains.IntelliJ-IDEA-Community -y"
+                ],
+                "package_name": "",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "Pycharm CE (flatpak)",
+        "description": "The most intelligent Python IDE from JetBrains.  This will install the flatpak version",
+        "category": "Programming",
+        "icon_url": "/static/images/PyCharm.png",
+        "installers": {
+            "apt": {
+                "pre_install": [
+                    "flatpak install flathub com.jetbrains.PyCharm-Community -y"
+                ],
+                "package_name": "",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "neofetch",
+        "description": "Neofetch displays information about your operating system, software and hardware in an aesthetic and visually pleasing way.",
+        "category": "Tools",
+        "icon_url": "/static/images/neofetch.png",
+        "installers": {
+            "apt": {
+                "pre_install": [],
+                "package_name": "neofetch",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "Blender (flatpak)",
+        "description": "Blender is the free and open source 3D creation suite.   This will install the flatpak version",
+        "category": "Graphics",
+        "icon_url": "/static/images/blender.png",
+        "installers": {
+            "apt": {
+                "pre_install": [
+                    "flatpak install flathub org.blender.Blender -y"
+                ],
+                "package_name": "",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "Hugo",
+        "description": "A static site generator written in GO",
+        "category": "Programming",
+        "icon_url": "/static/images/hugo.png",
+        "installers": {
+            "apt": {
+                "pre_install": [
+                    ""
+                ],
+                "package_name": "hugo",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "Etcher",
+        "description": "Burn images to SD cards & USB drives, safely and easily.",
+        "category": "Tools",
+        "icon_url": "/static/images/etcher-48.png",
+        "installers": {
+            "apt": {
+                "pre_install": [
+                    "apt install -y libappindicator1 libindicator7 libpango1.0-0 policykit-1-gnome",
+                    "curl -s 'https://api.github.com/repos/resin-io/etcher/releases/latest' | grep \"browser_download_url.*amd64.deb\" | cut -d : -f2,3 | tr -d \\\" | wget -i -",
+                    "dpkg -i etcher-electron*.deb"
+                ],
+                "package_name": "",
+                "post_install": [
+                    "rm etcher-electron*.deb"
+                ]
+            }
+        }
+    }
 ]
