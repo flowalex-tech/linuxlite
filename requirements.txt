@@ -1,4 +1,4 @@
-astroid==2.5.1
+astroid==2.5.3
 click==7.1.2
 flake8==3.8.4
 Flask==1.1.2
