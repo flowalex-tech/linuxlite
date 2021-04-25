@@ -16,12 +16,13 @@ def main():
     app, client = create_app_client()
 
     version = os.environ.get("INSTANCE").split(":")[0] + "_test"
+    #version = "ubuntu:20.04".split(":")[0] + "_test"
     form = {"version": version,
             "packages": packages}
     resp, code, headers = client.post("/get_installer", data=form)
     assert code == "200 OK"
-    resp = "\n".join(resp)
-    with open("test_script.sh", "w+") as test_f:
+    resp = b"\n".join(resp)
+    with open("test_script.sh", "wb+") as test_f:
         test_f.write(resp)
 
 def create_app_client():
