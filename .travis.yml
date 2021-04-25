@@ -1,0 +1,20 @@
+dist: xenial
+
+language: python
+python:
+  - "3.9"
+
+install: "pip install -r requirements.txt"
+
+
+services: docker
+
+env:
+  matrix:
+  - INSTANCE=ubuntu:16.04
+  - INSTANCE=ubuntu:18.04
+  - INSTANCE=ubuntu:20.04
+  #- INSTANCE=debian:jessie
+  #- INSTANCE=debian:wheezy
+
+script: ./tests/testing_build.sh

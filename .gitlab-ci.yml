@@ -6,7 +6,7 @@ variables:
 
 stages:
   - Static Analysis
-  - Test
+  - Check
 
 sonarcloud-check:
   stage: Static Analysis
@@ -20,12 +20,10 @@ sonarcloud-check:
   script:
     - sonar-scanner
   only:
-    - merge_requests
-    - dev
     - mainline
 
 mypy:
-  stage: Static Analysis
+  stage: Check
   allow_failure: true
   script:
   - python --version
@@ -39,7 +37,7 @@ mypy:
     - mainline
 
 flake8:
-  stage: Static Analysis
+  stage: Check
   allow_failure: true
   script:
     - python --version
@@ -51,7 +49,7 @@ flake8:
     - mainline
 
 pylint:
-  stage: Static Analysis
+  stage: Check
   allow_failure: true
   script:
   - python --version
@@ -63,7 +61,7 @@ pylint:
     - mainline
 
 jsonlint:
-  stage: Static Analysis
+  stage: Check
   variables:
     jsonlint_version: "latest"
   image: peterdavehello/jsonlint:$jsonlint_version
@@ -75,7 +73,7 @@ jsonlint:
     - find . -name "*.json" | xargs -n 1 jsonlint -q
 
 lint_dockerfile:
-  stage: Static Analysis
+  stage: Check
   allow_failure: true
   image: hadolint/hadolint:latest-debian
   script:
