@@ -33,9 +33,7 @@ mypy:
   - python -m mypy --ignore-missing-imports */*.py
   only:
     - merge_requests
-    - dev
-    - mainline
-
+    
 flake8:
   stage: Check
   allow_failure: true
@@ -45,8 +43,6 @@ flake8:
     - flake8 --ignore=E111 --max-line-length=120 */*.py
   only:
     - merge_requests
-    - dev
-    - mainline
 
 pylint:
   stage: Check
@@ -57,8 +53,6 @@ pylint:
     - pylint -d C0301 */*.py
   only:
     - merge_requests
-    - dev
-    - mainline
 
 jsonlint:
   stage: Check
@@ -67,8 +61,6 @@ jsonlint:
   image: peterdavehello/jsonlint:$jsonlint_version
   only:
       - merge_requests
-      - dev
-      - mainline
   script:
     - find . -name "*.json" | xargs -n 1 jsonlint -q
 
@@ -80,5 +72,3 @@ lint_dockerfile:
     - hadolint Dockerfile
   only:
     - merge_requests
-    - dev
-    - mainline
