@@ -858,18 +858,14 @@
         }
     },
     {
-        "name": "Bashtop",
+        "name": "Bpytop",
         "description": "Resource monitor that shows usage and stats for processor, memory, disks, network and processes.",
         "category": "Tools",
         "icon_url": "/static/images/htop.png",
         "installers": {
             "apt": {
-                "pre_install": [
-                    "add-apt-repository -y ppa:bashtop-monitor/bashtop",
-                    "apt update",
-                    "apt-get install -y bashtop"
-                ],
-                "package_name": "",
+                "pre_install": [],
+                "package_name": "bpytop",
                 "post_install": []
             }
         }
