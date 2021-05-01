@@ -17,4 +17,4 @@ env:
   #- INSTANCE=debian:jessie
   #- INSTANCE=debian:wheezy
 
-script: ./tests/testing_build.sh
+script: ./util/testing_build.sh
