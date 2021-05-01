@@ -17,6 +17,7 @@ def load_json():
       sub = True
     except:    # noqa: E722
       sub = False
+      raise
 
     with open("packages.json") as json_f:
       packages = json.load(json_f)
