@@ -1,4 +1,4 @@
-FROM python:3.9.4-slim-buster
+FROM python:3.9.5-slim-buster
 RUN  unset -v PYTHONPATH
 
 LABEL version="0.4"
