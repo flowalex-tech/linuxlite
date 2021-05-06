@@ -20,6 +20,6 @@ six==1.15.0
 SQLAlchemy==1.4.13
 toml==0.10.2
 typed-ast==1.4.3
-typing-extensions==3.7.4.3
+typing-extensions==3.10.0.0
 Werkzeug==1.0.1
 wrapt==1.12.1
