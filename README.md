@@ -56,4 +56,4 @@ If you'd like to ensure everything is working before you send in a PR, then you 
 6. Just run the curl command in your terminal and you'll see your script there. Ensure it's as intended.
 7. Make a PR
 
-[![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-black.svg)](https://sonarcloud.io/dashboard?id=flowalex_linux_package_installer)
+[![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-black.svg)](https://sonarcloud.io/dashboard?id=flowalex-tech_package_installer)
