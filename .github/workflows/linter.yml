@@ -9,9 +9,6 @@ name: Lint Code Base
 # Start the job on all push #
 #############################
 on:
-  push:
-    branches-ignore: [mainline]
-    # Remove the line above to run when pushing to master
   pull_request:
     branches: [mainline]
 
@@ -45,5 +42,9 @@ jobs:
         uses: github/super-linter@v4
         env:
           VALIDATE_ALL_CODEBASE: false
-          DEFAULT_BRANCH: master
+          VALIDATE_JSON: true
+          VALIDATE_PYTHON_FLAKE8: true
+          VALIDATE_PYTHON_MYPY: true
+          VALIDATE_DOCKERFILE_HADOLINT: true
+          DEFAULT_BRANCH: mainline
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
