@@ -47,5 +47,6 @@ jobs:
           VALIDATE_PYTHON_MYPY: true
           VALIDATE_DOCKERFILE_HADOLINT: true
           VALIDATE_PYTHON_PYLINT: true
+          VALIDATE_YAML: true
           DEFAULT_BRANCH: mainline
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
