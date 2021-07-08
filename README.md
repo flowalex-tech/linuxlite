@@ -2,14 +2,12 @@
 
 A fork of [https://www.lilite.co](https://www.lilite.co)
 
-[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=flowalex_linux_package_installer&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=flowalex_linux_package_installer)
-[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=flowalex_linux_package_installer&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=flowalex_linux_package_installer)
-[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=flowalex_linux_package_installer&metric=security_rating)](https://sonarcloud.io/dashboard?id=flowalex_linux_package_installer)
-[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=flowalex_linux_package_installer&metric=sqale_index)](https://sonarcloud.io/dashboard?id=flowalex_linux_package_installer)
-[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=flowalex_linux_package_installer&metric=bugs)](https://sonarcloud.io/dashboard?id=flowalex_linux_package_installer)
-[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=flowalex_linux_package_installer&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=flowalex_linux_package_installer)
-![Gitlab pipeline status](https://img.shields.io/gitlab/pipeline/flowalex/linux_package_installer/dev?label=Dev%20Build)
-![Gitlab pipeline status](https://img.shields.io/gitlab/pipeline/flowalex/linux_package_installer/mainline?label=mainline%20Build)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=flowalex-tech_package_installer&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=flowalex-tech_package_installer)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=flowalex-tech_package_installer&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=flowalex-tech_package_installer)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=flowalex-tech_package_installer&metric=security_rating)](https://sonarcloud.io/dashboard?id=flowalex-tech_package_installer)
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=flowalex-tech_package_installer&metric=sqale_index)](https://sonarcloud.io/dashboard?id=flowalex-tech_package_installer)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=flowalex-tech_package_installer&metric=bugs)](https://sonarcloud.io/dashboard?id=flowalex-tech_package_installer)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=flowalex-tech_package_installer&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=flowalex-tech_package_installer)
 
 ## Versions
 * Latest Release: ![Docker Image Version (latest semver)](https://img.shields.io/docker/v/flowalex/linux_package_installer?color=blue&sort=semver):
