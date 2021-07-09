@@ -10,7 +10,7 @@ name: Lint Code Base
 #############################
 on:
   pull_request:
-    branches: [mainline]
+    types: [opened, synchronize, reopened]
 
 ###############
 # Set the Job #
