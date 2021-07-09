@@ -6,6 +6,10 @@
 version: 2
 updates:
   - package-ecosystem: "pip" # See documentation for possible values
-    directory: "/", "/packages/requirements.txt" # Location of package manifests
+    directory: "/" # Location of package manifests
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "pip" # See documentation for possible values
+    directory: "/packages/requirements.txt" # Location of package manifests
     schedule:
       interval: "daily"
