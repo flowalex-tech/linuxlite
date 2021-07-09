@@ -10,10 +10,12 @@ updates:
     schedule:
       interval: "daily"
     target-branch: "dev"
-
+    assignees:
+      - "flowalex-tech"   
   - package-ecosystem: "pip" # See documentation for possible values
     directory: "/packages/" # Location of package manifests
     schedule:
       interval: "daily"
     target-branch: "dev"
-   
+    assignees:
+      - "flowalex-tech"   
