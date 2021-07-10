@@ -8,4 +8,14 @@ updates:
   - package-ecosystem: "pip" # See documentation for possible values
     directory: "/" # Location of package manifests
     schedule:
-      interval: "weekly"
+      interval: "daily"
+    target-branch: "dev"
+    assignees:
+      - "flowalex-tech"   
+  - package-ecosystem: "pip" # See documentation for possible values
+    directory: "/packages/" # Location of package manifests
+    schedule:
+      interval: "daily"
+    target-branch: "dev"
+    assignees:
+      - "flowalex-tech"   
