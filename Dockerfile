@@ -1,7 +1,7 @@
 FROM python:3.9.7-slim-buster
 RUN  unset -v PYTHONPATH
 
-LABEL version="0.4.1"
+LABEL version="0.4.2"
 LABEL maintainer="Alex Wolf"
 
 RUN adduser --disabled-password --gecos ''  lilite
