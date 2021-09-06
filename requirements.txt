@@ -1,10 +1,10 @@
-astroid==2.6.2
+astroid==2.7.3
 click==8.0.1
 flake8==3.9.2
 Flask==2.0.1
 Flask-SQLAlchemy==2.5.1
 gunicorn==20.1.0
-isort==5.9.2
+isort==5.9.3
 itsdangerous==2.0.1
 lazy-object-proxy==1.6.0
 Jinja2==3.0.1
@@ -15,9 +15,9 @@ mypy-extensions==0.4.3
 psycopg2-binary==2.9.1
 pycodestyle==2.7.0
 pyflakes==2.3.1
-pylint==2.9.3
+pylint==2.10.2
 six==1.16.0
-SQLAlchemy==1.4.20
+SQLAlchemy==1.4.23
 toml==0.10.2
 typed-ast==1.4.3
 typing-extensions==3.10.0.0
