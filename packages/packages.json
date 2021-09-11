@@ -631,16 +631,16 @@
     },
     {
         "name": "Go",
-        "description": "Go is an open source programming language that makes it easy to build simple, reliable, and efficient software.",
+        "description": "Go is an open source programming language that makes it easy to build simple, reliable, and efficient software. (Currently 1.17 will be installed)",
         "category": "Programming",
         "icon_url": "/static/images/go-48.png",
         "installers": {
             "apt": {
                 "pre_install": [
-                    "add-apt-repository ppa:longsleep/golang-backports",
-                    "apt update"
+                    "wget https://golang.org/dl/go1.17.linux-amd64.tar.gz",
+                    "rm -rf /usr/local/go && tar -C /usr/local -xzf go1.17.linux-amd64.tar.gz"
                 ],
-                "package_name": "golang-go",
+                "package_name": "",
                 "post_install": []
             }
         }
@@ -1005,7 +1005,7 @@
         "name": "neofetch",
         "description": "Neofetch displays information about your operating system, software and hardware in an aesthetic and visually pleasing way.",
         "category": "Tools",
-        "icon_url": "/static/images/neofetch.png",
+        "icon_url": "/static/images/Tux.png",
         "installers": {
             "apt": {
                 "pre_install": [],
@@ -1060,6 +1060,47 @@
                 "post_install": [
                     "rm etcher-electron*.deb"
                 ]
+            }
+        }
+    },
+    {
+        "name": "Jack",
+        "description": "JACK (JACK Audio Connection Kit) refers to an API and two implementations of this API, jack1 and jack2. It provides a basic infrastructure for audio applications to communicate with each other and with audio hardware. Through JACK, users are enabled to build powerful systems for signal processing and music production.",
+        "category": "Tools",
+        "icon_url": "/static/images/jack.png",
+        "installers": {
+            "apt": {
+                "pre_install": [ ],
+                "package_name": "jack",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "Nautilus Admin",
+        "description": "Right-click context menu in nautilus for admin",
+        "category": "Tools",
+        "icon_url": "",
+        "installers": {
+            "apt": {
+                "pre_install": [ ],
+                "package_name": "nautilus-admin",
+                "post_install": []
+            }
+        }
+    },
+    {
+        "name": "Pyenv",
+        "description": "Simple Python version management (uses pyenv-installer)",
+        "category": "Programming",
+        "icon_url": "/static/images/pyenv.png",
+        "installers": {
+            "apt": {
+                "pre_install": [
+                    "curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash"
+                ],
+                "package_name": "",
+                "post_install": []
             }
         }
     }
