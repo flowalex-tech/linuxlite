@@ -21,5 +21,5 @@ SQLAlchemy==1.4.25
 toml==0.10.2
 typed-ast==1.4.3
 typing-extensions==3.10.0.2
-Werkzeug==2.0.1
+Werkzeug==2.0.2
 wrapt==1.12.1
