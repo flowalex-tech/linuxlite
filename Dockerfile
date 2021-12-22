@@ -1,4 +1,4 @@
-FROM python:3.9.7-slim-bullseye
+FROM python:3.11.0a3-slim-bullseye
 RUN  unset -v PYTHONPATH
 
 LABEL version="0.4.2"
