@@ -63,7 +63,7 @@ def index():
 
 @app.route('/support')
 def support():
-    return redirect("https://documentation.flowalex.tech")
+    return redirect("https://docs.flowalex.tech")
 
 @app.route('/misc')
 def misc():
