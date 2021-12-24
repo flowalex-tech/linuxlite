@@ -714,7 +714,7 @@
         "installers": {
             "apt": {
                 "pre_install": [
-                    "flatpak install flathub org.darktable.Darktable -y"
+                    "flatpak install flathub ch.protonmail.protonmail-bridge -y"
                 ],
                 "package_name": "",
                 "post_install": []
