@@ -1,7 +1,7 @@
-FROM python:3.9.7-slim-buster
+FROM python:3.10-slim-bullseye
 RUN  unset -v PYTHONPATH
 
-LABEL version="0.4.1"
+LABEL version="0.4.2"
 LABEL maintainer="Alex Wolf"
 
 RUN adduser --disabled-password --gecos ''  lilite
@@ -14,6 +14,7 @@ RUN python -m venv venv
 
 # hadolint ignore=DL3018,DL3005,DL3059
 RUN apt-get update && apt-get upgrade -y \
+  && apt-get install build-essential python3-dev libxslt-dev libffi-dev libssl-dev gcc -y\
   && rm -rf /var/lib/apt/lists/*
 
 # hadolint ignore=DL3013,DL3042,DL3059
