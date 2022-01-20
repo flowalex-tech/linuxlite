@@ -17,7 +17,7 @@ pycodestyle==2.8.0
 pyflakes==2.4.0
 pylint==2.12.2
 six==1.16.0
-SQLAlchemy==1.4.29
+SQLAlchemy==1.4.30
 toml==0.10.2
 typed-ast==1.5.1
 typing-extensions==4.0.1
